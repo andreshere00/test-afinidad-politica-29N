@@ -66,8 +66,9 @@ tienes ocupado, cámbialo allí.
 1. Introducción y elección de versión:
    - **Test rápido** (por defecto, 5-10 min): 26 preguntas, 2 por tema.
    - **Test completo** (12-15 min): 38 preguntas, 3 por tema (2 en sector primario).
-2. Paso 1: temas más importantes (3–5, cuentan ×2).
-3. Paso 2: temas menos importantes (1–3, cuentan ×0,5).
+2. Paso 1 (opcional): temas más importantes (hasta 5, cuentan ×2).
+3. Paso 2 (opcional): temas menos importantes (hasta 3, cuentan ×0,5). Sin selección, todos los
+   temas pesan lo mismo (7,69 %).
 4. Test: cada pregunta tiene 4 medidas.
 5. Resultados: afinidad por partido, afinidad por tema, un radar de afinidad por partido
    (porcentaje de sus medidas que has apoyado en cada uno de los 13 temas) y de quién era cada
@@ -94,8 +95,12 @@ tienes ocupado, cámbialo allí.
   de esta pregunta» (`QuestionSources`) sin asociarlas a ninguna medida, para no delatar al partido.
 - `src/data/modes.ts` – versiones del test (rápido y completo) y qué preguntas entran en el rápido.
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
-- `src/lib/export.ts` – archivo de texto descargable («Descargar mis respuestas») con el resultado
-  y, para cada pregunta, la medida de cada partido y si la has apoyado. Se genera en el navegador.
+- `src/lib/profile.ts` – análisis descriptivo del perfil (resultado general, orientación aproximada
+  izquierda–derecha, temas en los que lidera cada partido, prioridades y forma de responder).
+- `src/lib/pdf/` – PDF descargable («Descargar mis respuestas (PDF)») con
+  [`@react-pdf/renderer`](https://react-pdf.org): afinidad, análisis del perfil, tabla y radares por
+  tema y, pregunta a pregunta, de quién era cada medida y si la apoyaste. Se genera en el navegador
+  (no se envía nada) y la librería solo se descarga al pulsar el botón.
 - `src/components/AffinityRadar.tsx` – radares de afinidad por tema (SVG propio, 13 ejes con el icono
   de cada tema y dato al pasar el ratón o con el foco).
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,

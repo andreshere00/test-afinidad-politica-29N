@@ -1,6 +1,6 @@
-import { Check, ChevronDown, Download, ExternalLink, MessageCircle } from "lucide-react"
+import { Check, ChevronDown, Download, ExternalLink, Loader2, MessageCircle } from "lucide-react"
 import { motion } from "motion/react"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -21,7 +21,6 @@ import { PARTIES, PARTY_BY_ID, partyStyle, type PartyId } from "@/data/parties"
 import { MODES, type TestMode } from "@/data/modes"
 import type { Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
-import { answersText, downloadText } from "@/lib/export"
 import { formatPercent, formatWeight } from "@/lib/format"
 import {
   computeResults,
@@ -69,6 +68,7 @@ export function Results({
   const answered = questions.filter((q) => Array.isArray(answers[q.id])).length
   const top = results[0]
   const missing = MODES.full.questions.length - questions.length
+  const [pdfState, setPdfState] = useState<"idle" | "loading" | "error">("idle")
 
   return (
     <div className="space-y-6">
@@ -296,15 +296,30 @@ export function Results({
           size="lg"
           variant="outline"
           className="h-10 px-5"
-          onClick={() =>
-            downloadText(
-              answersText(results, questions, answers, mode),
-              "test-afinidad-29N-respuestas.txt"
-            )
-          }
+          disabled={pdfState === "loading"}
+          onClick={async () => {
+            setPdfState("loading")
+            try {
+              // El generador de PDF es pesado: se carga solo al pulsar.
+              const { downloadAnswersPdf } = await import("@/lib/pdf/download")
+              await downloadAnswersPdf({ mode, results, questions, answers, weights, high, low })
+              setPdfState("idle")
+            } catch (err) {
+              console.error(err)
+              setPdfState("error")
+            }
+          }}
         >
-          <Download aria-hidden />
-          Descargar mis respuestas
+          {pdfState === "loading" ? (
+            <Loader2 className="animate-spin" aria-hidden />
+          ) : (
+            <Download aria-hidden />
+          )}
+          {pdfState === "loading"
+            ? "Generando PDF…"
+            : pdfState === "error"
+              ? "Reintentar descarga"
+              : "Descargar mis respuestas (PDF)"}
         </Button>
         <Button size="lg" className="h-10 px-5" onClick={onRestart}>
           Repetir el test
