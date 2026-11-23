@@ -66,8 +66,9 @@ tienes ocupado, cámbialo allí.
 2. Paso 1: temas más importantes (3–5, cuentan ×2).
 3. Paso 2: temas menos importantes (1–3, cuentan ×0,5).
 4. Test: cada pregunta tiene 4 medidas.
-5. Resultados: afinidad por partido, afinidad por tema y de quién era cada medida, con enlace a la
-   fuente cuando la medida no procede del listado original. Tras el test rápido, «Completar el
+5. Resultados: afinidad por partido, afinidad por tema, un radar de animadversión por partido
+   (porcentaje de sus medidas que no has apoyado en cada uno de los 13 temas) y de quién era cada
+   medida, con enlace a la fuente cuando la medida no procede del listado original. Tras el test rápido, «Completar el
    test» plantea solo las 12 preguntas que faltan y conserva las respuestas.
 
 ## Estructura
@@ -87,6 +88,8 @@ tienes ocupado, cámbialo allí.
   de esta pregunta» (`QuestionSources`) sin asociarlas a ninguna medida, para no delatar al partido.
 - `src/data/modes.ts` – versiones del test (rápido y completo) y qué preguntas entran en el rápido.
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
+- `src/components/AversionRadar.tsx` – radares de animadversión (SVG propio, 13 ejes con el icono
+  de cada tema y dato al pasar el ratón o con el foco).
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,
   `PartyMark` (distintivo de partido); `ui/` contiene los componentes de shadcn.
 - `datos/` – el listado de medidas en CSV y XLSX, con las medidas añadidas y sus fuentes.
