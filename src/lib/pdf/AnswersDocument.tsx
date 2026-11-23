@@ -17,6 +17,7 @@ import { PARTIES, PARTY_BY_ID, type PartyId } from "@/data/parties"
 import { MODES, type TestMode } from "@/data/modes"
 import type { Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
+import { parseEmphasis } from "@/lib/emphasis"
 import { formatPercent, formatWeight } from "@/lib/format"
 import { analyzeProfile, type Profile } from "@/lib/profile"
 import type { Answers, PartyResult, Weights } from "@/lib/scoring"
@@ -451,7 +452,17 @@ function QuestionCard({ question: q, answer: a }: { question: Question; answer: 
             <Mark id={p.id} size={15} />
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 7.5, fontWeight: 500, color, lineHeight: 1.3 }}>{p.name}</Text>
-              <Text style={{ fontSize: 8.5, lineHeight: 1.35 }}>{clean(q.options[p.id])}</Text>
+              <Text style={{ fontSize: 8.5, lineHeight: 1.35 }}>
+                {parseEmphasis(clean(q.options[p.id])).map((s, i) =>
+                  s.bold ? (
+                    <Text key={i} style={{ fontWeight: 700 }}>
+                      {s.text}
+                    </Text>
+                  ) : (
+                    s.text
+                  )
+                )}
+              </Text>
             </View>
             {ok && (
               <Text style={{ fontSize: 7.5, fontWeight: 700, color, marginLeft: 6, lineHeight: 1.3 }}>

@@ -13,6 +13,7 @@ import { TOPIC_BY_ID } from "@/data/topics"
 import type { Answer, Answers } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
 
+import { Emphasis } from "./Emphasis"
 import { ImplicationsPopover } from "./ImplicationsPopover"
 import { QuestionSources } from "./QuestionSources"
 
@@ -178,7 +179,9 @@ function QuestionStep({
                     onCheckedChange={() => toggle(partyId)}
                     className="mt-1"
                   />
-                  <span className="flex-1">{question.options[partyId]}</span>
+                  <span className="flex-1">
+                    <Emphasis text={question.options[partyId]} />
+                  </span>
                   <kbd className="mt-0.5 font-heading text-xs text-muted-foreground">
                     {LETTERS[i]}
                   </kbd>

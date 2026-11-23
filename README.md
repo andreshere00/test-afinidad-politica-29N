@@ -85,7 +85,8 @@ tienes ocupado, cámbialo allí.
   durante el test.
 - `src/data/questions.ts` – las preguntas: `prompt` (subtema), `question` (la pregunta en lenguaje
   llano), `context` (glosario o contexto breve), `options` (una medida por partido, redactada sin
-  tecnicismos), `implications` (qué cambiaría y argumentos a favor y en contra de cada medida, en
+  tecnicismos; las palabras clave van entre `**…**` y se muestran en negrita en el test, los
+  resultados y el PDF, vía `src/lib/emphasis.ts`), `implications` (qué cambiaría y argumentos a favor y en contra de cada medida, en
   tono neutral y sin mencionar al partido) y `sources` (fuente de las medidas añadidas fuera del
   listado original).
 - `src/components/ImplicationsPopover.tsx` – el panel «¿Qué implica?» (se abre al pasar el ratón o

@@ -7,7 +7,8 @@ import type { TopicId } from "./topics"
  * En el test se muestran anónimas y en orden aleatorio; el usuario marca las que apoyaría.
  *
  * Los textos de `options` son una redacción en lenguaje llano de la medida del listado
- * (sin siglas ni tecnicismos). `implications` resume, de forma neutral, qué cambiaría y los
+ * (sin siglas ni tecnicismos). Las palabras clave van entre `**…**` y se muestran en negrita;
+ * se marcan en las cuatro medidas por igual para no delatar al partido. `implications` resume, de forma neutral, qué cambiaría y los
  * argumentos habituales a favor y en contra; nunca menciona al partido.
  */
 export interface Question {
@@ -62,10 +63,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La Ley de Vivienda de 2023 permite a las comunidades autónomas declarar «zonas tensionadas», donde se pueden limitar las subidas del alquiler.",
     options: {
-      vox: "Derogar la Ley de Vivienda y reformar la Ley del Suelo para que haya más terreno donde construir.",
-      pp: "Derogar la Ley de Vivienda y los topes al alquiler, y que los ayuntamientos resuelvan las licencias de obra en 3 meses: si no contestan, se dan por concedidas.",
-      psoe: "Contratos de alquiler más largos, congelar el alquiler en las zonas tensionadas y un seguro público contra impagos para inquilinos jóvenes.",
-      fa: "Contratos de alquiler indefinidos y, en zonas tensionadas, un alquiler máximo del 25 % de la renta media neta de la zona.",
+      vox: "**Derogar la Ley de Vivienda** y reformar la Ley del Suelo para que haya **más terreno donde construir**.",
+      pp: "**Derogar la Ley de Vivienda y los topes al alquiler**, y que los ayuntamientos resuelvan las **licencias de obra en 3 meses**: si no contestan, se dan por concedidas.",
+      psoe: "**Contratos de alquiler más largos**, **congelar el alquiler** en las zonas tensionadas y un **seguro público contra impagos** para inquilinos jóvenes.",
+      fa: "**Contratos de alquiler indefinidos** y, en zonas tensionadas, un **alquiler máximo del 25 % de la renta media** neta de la zona.",
     },
     implications: {
       vox: imp(
@@ -98,10 +99,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Al comprar vivienda nueva se paga IVA (10 %); en la de segunda mano, el Impuesto de Transmisiones Patrimoniales (ITP), que fija cada comunidad (entre el 6 % y el 10 %).",
     options: {
-      vox: "Quitar el IVA a la primera vivienda nueva, eliminar el ITP en la de segunda mano y recuperar la desgravación en el IRPF por comprar vivienda habitual.",
-      pp: "Para menores de 40 años: IVA de la primera vivienda nueva al 4 % (ahora 10 %), una cuenta de ahorro para vivienda de hasta 2.000 €/año que desgrava un 20 % y avales públicos de hasta 40.000 € para la entrada.",
-      psoe: "Préstamos públicos sin intereses de hasta 50.000 € para comprar la primera vivienda, con un fondo de 10.000 M€.",
-      fa: "Una hipoteca pública a tipo fijo, de oferta obligatoria.",
+      vox: "**Quitar el IVA a la primera vivienda nueva**, **eliminar el ITP** en la de segunda mano y recuperar la **desgravación en el IRPF** por comprar vivienda habitual.",
+      pp: "Para menores de 40 años: **IVA de la primera vivienda nueva al 4 %** (ahora 10 %), una **cuenta de ahorro para vivienda** de hasta 2.000 €/año que desgrava un 20 % y **avales públicos** de hasta 40.000 € para la entrada.",
+      psoe: "**Préstamos públicos sin intereses** de **hasta 50.000 €** para comprar la primera vivienda, con un fondo de 10.000 M€.",
+      fa: "Una **hipoteca pública a tipo fijo**, de **oferta obligatoria**.",
     },
     implications: {
       vox: imp(
@@ -134,10 +135,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Se llama «grandes tenedores» a quienes poseen muchas viviendas (en general, más de 10), como fondos de inversión o bancos.",
     options: {
-      vox: "Dar prioridad a los españoles en la vivienda pública y subir los impuestos a los compradores de fuera de la UE y a los fondos de inversión.",
-      pp: "Construir 1 millón de viviendas en la legislatura, con una nueva Ley del Suelo que agilice la urbanización.",
-      psoe: "Movilizar el 1 % del PIB cada año para el acceso a la vivienda y crear un parque estatal de 100.000 viviendas asequibles.",
-      fa: "Invertir el 1 % del PIB al año (unos 17.000 M€) para sumar 1,5 millones de viviendas públicas en 12 años, y expropiar progresivamente viviendas a los grandes tenedores.",
+      vox: "Dar **prioridad a los españoles en la vivienda pública** y **subir los impuestos a los compradores de fuera de la UE** y a los fondos de inversión.",
+      pp: "Construir **1 millón de viviendas** en la legislatura, con una **nueva Ley del Suelo** que agilice la urbanización.",
+      psoe: "Movilizar el **1 % del PIB cada año** para el acceso a la vivienda y crear un **parque estatal de 100.000 viviendas asequibles**.",
+      fa: "Invertir el 1 % del PIB al año (unos 17.000 M€) para sumar **1,5 millones de viviendas públicas** en 12 años, y **expropiar progresivamente viviendas** a los grandes tenedores.",
     },
     implications: {
       vox: imp(
@@ -172,10 +173,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El «arraigo» permite obtener la residencia legal tras vivir en España un tiempo (en general, 2 años) demostrando vínculos laborales, familiares o sociales.",
     options: {
-      vox: "Prohibir las regularizaciones masivas, eliminar el arraigo como vía para obtener papeles y repatriar a los inmigrantes en situación irregular.",
-      pp: "Identificar en 7 días como máximo a quien entre de forma irregular, acelerar las devoluciones y crear centros para inmigrantes irregulares en terceros países.",
-      psoe: "Ampliar las vías legales para pedir protección internacional y reforzar el sistema de acogida y asilo.",
-      fa: "Un procedimiento permanente de regularización y terminar de tramitar los expedientes pendientes de la regularización extraordinaria.",
+      vox: "**Prohibir las regularizaciones masivas**, **eliminar el arraigo** como vía para obtener papeles y **repatriar** a los inmigrantes en situación irregular.",
+      pp: "**Identificar en 7 días** como máximo a quien entre de forma irregular, **acelerar las devoluciones** y crear **centros para inmigrantes irregulares en terceros países**.",
+      psoe: "**Ampliar las vías legales** para pedir protección internacional y **reforzar el sistema de acogida y asilo**.",
+      fa: "Un **procedimiento permanente de regularización** y terminar de tramitar los **expedientes pendientes** de la regularización extraordinaria.",
     },
     implications: {
       vox: imp(
@@ -208,10 +209,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Hoy se piden en general 10 años de residencia legal para la nacionalidad, y 2 años a quienes vienen de Iberoamérica, Filipinas, Guinea Ecuatorial, Portugal o Andorra.",
     options: {
-      vox: "Endurecer el acceso a la nacionalidad española y expulsar a los extranjeros que cometan delitos graves o reiterados.",
-      pp: "Una ley de nacionalidad más exigente, con preferencia para personas de países hispanos, y exigir compromisos de integración (aprender español, conocer la Constitución) para renovar la residencia.",
-      psoe: "Un Plan de Integración y Ciudadanía 2026-2030 con 500 M€ iniciales y agilizar la homologación de títulos extranjeros.",
-      fa: "Devolver la nacionalidad española a los saharauis nacidos bajo administración española antes de 1977 y a sus descendientes, y una ley integral contra el racismo.",
+      vox: "**Endurecer el acceso a la nacionalidad** española y **expulsar a los extranjeros que cometan delitos** graves o reiterados.",
+      pp: "Una **ley de nacionalidad más exigente**, con **preferencia para personas de países hispanos**, y exigir **compromisos de integración** (aprender español, conocer la Constitución) para renovar la residencia.",
+      psoe: "Un **Plan de Integración y Ciudadanía** 2026-2030 con 500 M€ iniciales y agilizar la **homologación de títulos extranjeros**.",
+      fa: "**Devolver la nacionalidad española a los saharauis** nacidos bajo administración española antes de 1977 y a sus descendientes, y una **ley integral contra el racismo**.",
     },
     implications: {
       vox: imp(
@@ -247,10 +248,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El Ingreso Mínimo Vital (IMV) es una ayuda estatal para hogares sin ingresos suficientes; hoy también pueden cobrarlo extranjeros con residencia legal.",
     options: {
-      vox: "Que el Ingreso Mínimo Vital y otras ayudas sean solo para españoles («prioridad nacional») y un plan de «remigración» para los inmigrantes que no contribuyan.",
-      pp: "Cupos anuales de inmigrantes para trabajar por sectores, condicionados a que sus países de origen colaboren en las devoluciones.",
-      psoe: "Priorizar la protección de los menores que llegan solos y apoyar a los territorios desbordados por la acogida.",
-      fa: "Ampliar las vías legales y seguras para migrar y pedir asilo.",
+      vox: "Que el Ingreso Mínimo Vital y otras ayudas sean **solo para españoles** («prioridad nacional») y un **plan de «remigración»** para los inmigrantes que no contribuyan.",
+      pp: "**Cupos anuales de inmigrantes para trabajar** por sectores, condicionados a que sus países de origen **colaboren en las devoluciones**.",
+      psoe: "Priorizar la **protección de los menores que llegan solos** y **apoyar a los territorios desbordados** por la acogida.",
+      fa: "Ampliar las **vías legales y seguras para migrar y pedir asilo**.",
     },
     implications: {
       vox: imp(
@@ -284,10 +285,10 @@ export const QUESTIONS: Question[] = [
     question: "¿Qué cambio en el trabajo te parece más importante?",
     context: "La jornada laboral máxima legal en España es hoy de 40 horas semanales.",
     options: {
-      vox: "Derogar la legislación laboral vigente y recortar las subvenciones públicas a partidos, sindicatos y patronales.",
-      pp: "Que la empresa no pague cotizaciones por su primer empleado (y la mitad por el segundo), y que pague menos por desempleo si su plantilla es más estable que la media de su sector.",
-      psoe: "Bajar la jornada a 37,5 horas sin reducir el sueldo y avanzar hacia las 35 horas mediante los convenios.",
-      fa: "Semana laboral de 32 horas sin bajada de sueldo.",
+      vox: "**Derogar la legislación laboral vigente** y **recortar las subvenciones públicas** a partidos, sindicatos y patronales.",
+      pp: "Que la empresa **no pague cotizaciones por su primer empleado** (y la mitad por el segundo), y que **pague menos por desempleo** si su plantilla es más estable que la media de su sector.",
+      psoe: "Bajar la jornada a **37,5 horas sin reducir el sueldo** y avanzar hacia las **35 horas** mediante los convenios.",
+      fa: "**Semana laboral de 32 horas** **sin bajada de sueldo**.",
     },
     implications: {
       vox: imp(
@@ -320,10 +321,10 @@ export const QUESTIONS: Question[] = [
     context:
       "«Silencio administrativo positivo» significa que, si la Administración no responde a tiempo, la solicitud se considera aprobada.",
     options: {
-      vox: "Eliminar tres normas por cada ley nueva, que el silencio administrativo sea positivo como regla general y acabar con la cita previa obligatoria.",
-      pp: "Reducir el papeleo de las empresas un 25 % hasta 2029 (35 % para pymes) y eliminar tres normas por cada nueva.",
-      psoe: "Registro digital de la jornada, un Estatuto del Becario y que la indemnización por despido injustificado se ajuste al daño real causado, no a una cifra fija.",
-      fa: "Que los trabajadores tengan representantes en el consejo de administración: un tercio en empresas de 50 a 1.000 empleados y la mitad en las mayores.",
+      vox: "**Eliminar tres normas por cada ley nueva**, que el **silencio administrativo sea positivo** como regla general y **acabar con la cita previa obligatoria**.",
+      pp: "**Reducir el papeleo de las empresas un 25 %** hasta 2029 (35 % para pymes) y **eliminar tres normas por cada nueva**.",
+      psoe: "**Registro digital de la jornada**, un **Estatuto del Becario** y que la **indemnización por despido injustificado** se ajuste al daño real causado, no a una cifra fija.",
+      fa: "Que los trabajadores tengan **representantes en el consejo de administración**: un tercio en empresas de 50 a 1.000 empleados y la mitad en las mayores.",
     },
     implications: {
       vox: imp(
@@ -356,10 +357,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El salario mínimo (SMI) lo fija cada año el Gobierno. La SEPI es la sociedad estatal que gestiona las participaciones del Estado en empresas.",
     options: {
-      vox: "Un Plan Nacional de Reindustrialización y una ley para que una empresa autorizada en una comunidad pueda operar en toda España sin pedir nuevas licencias.",
-      pp: "Cuota de autónomos cero el primer año y que los autónomos que facturen menos de 85.000 € al año no tengan que cobrar ni declarar IVA.",
-      psoe: "Fijar por ley que el salario mínimo esté siempre por encima del 60 % del salario medio, y una Ley de Industria y Autonomía Estratégica.",
-      fa: "Garantizar un salario mínimo del 60 % del salario medio neto y convertir la SEPI en agencia industrial y banco público de inversión.",
+      vox: "Un **Plan Nacional de Reindustrialización** y una ley para que una empresa autorizada en una comunidad pueda **operar en toda España sin pedir nuevas licencias**.",
+      pp: "**Cuota de autónomos cero el primer año** y que los autónomos que facturen menos de 85.000 € al año **no tengan que cobrar ni declarar IVA**.",
+      psoe: "Fijar por ley que el **salario mínimo esté siempre por encima del 60 % del salario medio**, y una **Ley de Industria y Autonomía Estratégica**.",
+      fa: "Garantizar un **salario mínimo del 60 % del salario medio neto** y convertir la SEPI en **agencia industrial y banco público de inversión**.",
     },
     implications: {
       vox: imp(
@@ -394,10 +395,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La «colaboración público-privada» consiste en que la sanidad pública pague a centros privados para hacer pruebas u operaciones.",
     options: {
-      vox: "Un plan nacional contra las listas de espera apoyándose en la sanidad privada (colaboración público-privada).",
-      pp: "Al menos 4.500 médicos más en los centros de salud y un plan urgente para reducir las listas de espera.",
-      psoe: "Que el gasto en sanidad pública ronde el 7 % del PIB, priorizando la gestión pública directa.",
-      fa: "Un mínimo legal del 8 % del PIB para la sanidad pública y reforzar obligatoriamente la atención primaria.",
+      vox: "Un **plan nacional contra las listas de espera** apoyándose en la **sanidad privada** (colaboración público-privada).",
+      pp: "Al menos **4.500 médicos más** en los centros de salud y un plan urgente para **reducir las listas de espera**.",
+      psoe: "Que el gasto en sanidad pública ronde el **7 % del PIB**, priorizando la **gestión pública directa**.",
+      fa: "Un mínimo legal del **8 % del PIB para la sanidad pública** y reforzar obligatoriamente la **atención primaria**.",
     },
     implications: {
       vox: imp(
@@ -430,10 +431,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Hoy la sanidad pública apenas cubre el dentista (sobre todo extracciones y algunos tratamientos infantiles) y la atención psicológica tiene largas esperas.",
     options: {
-      vox: "Reforzar los cuidados paliativos y proteger la objeción de conciencia de los sanitarios.",
-      pp: "Una ley nacional de cuidados paliativos y un Plan Nacional de Salud Mental 2027-2037 centrado en niños y adolescentes.",
-      psoe: "Incluir el dentista básico en la sanidad pública (mientras tanto, una ayuda de hasta 200 € al año) y ver a un psicólogo público en 30 días como máximo.",
-      fa: "Cobertura dental pública para la mitad de la población.",
+      vox: "Reforzar los **cuidados paliativos** y proteger la **objeción de conciencia** de los sanitarios.",
+      pp: "Una **ley nacional de cuidados paliativos** y un **Plan Nacional de Salud Mental** 2027-2037 centrado en niños y adolescentes.",
+      psoe: "Incluir el **dentista básico en la sanidad pública** (mientras tanto, una ayuda de hasta 200 € al año) y ver a un **psicólogo público en 30 días** como máximo.",
+      fa: "**Cobertura dental pública** para la mitad de la población.",
     },
     implications: {
       vox: imp(
@@ -466,10 +467,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Desde 2018, las personas extranjeras sin residencia legal tienen derecho a la sanidad pública. Cada comunidad tiene su propia tarjeta sanitaria y su sistema informático.",
     options: {
-      vox: "Excluir de la sanidad pública ordinaria a los extranjeros sin residencia legal, salvo urgencias graves.",
-      pp: "Una tarjeta sanitaria y una historia clínica que funcionen igual en toda España.",
-      psoe: "Reforzar la atención primaria y ampliar el programa público de gafas gratuitas para menores.",
-      fa: "Gafas y lentillas gratuitas y que la sanidad pública pague los audífonos.",
+      vox: "**Excluir de la sanidad pública ordinaria** a los **extranjeros sin residencia legal**, salvo urgencias graves.",
+      pp: "Una **tarjeta sanitaria** y una **historia clínica** que funcionen **igual en toda España**.",
+      psoe: "**Reforzar la atención primaria** y ampliar el programa público de **gafas gratuitas para menores**.",
+      fa: "**Gafas y lentillas gratuitas** y que la sanidad pública pague los **audífonos**.",
     },
     implications: {
       vox: imp(
@@ -504,10 +505,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La LOMLOE (2020) es la ley educativa vigente; entre otras cosas, permite pasar de curso con suspensos si lo decide el equipo docente. Las «reválidas» son exámenes externos al final de una etapa, necesarios para obtener el título.",
     options: {
-      vox: "Derogar la ley educativa vigente (LOMLOE) y recuperar las reválidas al final de cada etapa.",
-      pp: "Sustituir la LOMLOE y que en la ESO solo se pase de curso aprobando las asignaturas.",
-      psoe: "Bajar el abandono escolar temprano por debajo del 10 % antes de 2030, más plazas de FP en áreas como IA, ciberseguridad o energía, y un orientador por cada 250 alumnos.",
-      fa: "Garantizar al menos el 7 % del PIB para la educación pública y bajar el número de alumnos por aula.",
+      vox: "**Derogar la ley educativa vigente** (LOMLOE) y recuperar las **reválidas** al final de cada etapa.",
+      pp: "**Sustituir la LOMLOE** y que en la ESO **solo se pase de curso aprobando las asignaturas**.",
+      psoe: "Bajar el **abandono escolar temprano por debajo del 10 %** antes de 2030, **más plazas de FP** en áreas como IA, ciberseguridad o energía, y **un orientador por cada 250 alumnos**.",
+      fa: "Garantizar al menos el **7 % del PIB para la educación pública** y **bajar el número de alumnos por aula**.",
     },
     implications: {
       vox: imp(
@@ -540,10 +541,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La etapa de 0 a 3 años no es obligatoria; en muchas zonas las plazas públicas son de pago o no alcanzan para todos.",
     options: {
-      vox: "Escuela infantil de 0 a 3 años gratuita.",
-      pp: "Escuela infantil de 0 a 3 años gratuita al final de la legislatura.",
-      psoe: "Plaza pública de 0 a 3 años para todos los niños y comedor gratuito para los alumnos en riesgo de pobreza.",
-      fa: "Plaza de 0 a 3 años para todos y comedor gratuito para todo el alumnado de Infantil y Primaria de la escuela pública, con producto fresco y local.",
+      vox: "**Escuela infantil de 0 a 3 años gratuita**.",
+      pp: "**Escuela infantil de 0 a 3 años gratuita** **al final de la legislatura**.",
+      psoe: "**Plaza pública de 0 a 3 años para todos** los niños y **comedor gratuito** para los alumnos en riesgo de pobreza.",
+      fa: "**Plaza de 0 a 3 años para todos** y **comedor gratuito para todo el alumnado** de Infantil y Primaria de la escuela pública, con producto fresco y local.",
     },
     implications: {
       vox: imp(
@@ -576,10 +577,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La PAU (antes EvAU o selectividad) es el examen de acceso a la universidad; hoy cada comunidad hace el suyo. En Cataluña, la «inmersión» significa que el catalán es la lengua principal de enseñanza.",
     options: {
-      vox: "Un examen de acceso a la universidad único en toda España, los mismos contenidos en todas las comunidades y garantizar la enseñanza en español.",
-      pp: "Un examen de acceso a la universidad común en toda España, nota mínima para estudiar Magisterio y garantizar la educación en español en todas las etapas.",
-      psoe: "Matrícula gratuita en el primer curso de grado en universidades públicas y becas Erasmus de hasta 1.500 € al mes según renta.",
-      fa: "Un plan estatal para aprender las lenguas cooficiales, manteniendo la inmersión en catalán en Cataluña, y bajar los precios de la universidad hasta hacerla gratuita.",
+      vox: "Un **examen de acceso a la universidad único** en toda España, los **mismos contenidos en todas las comunidades** y garantizar la **enseñanza en español**.",
+      pp: "Un **examen de acceso a la universidad común** en toda España, **nota mínima para estudiar Magisterio** y garantizar la **educación en español** en todas las etapas.",
+      psoe: "**Matrícula gratuita en el primer curso** de grado en universidades públicas y **becas Erasmus de hasta 1.500 € al mes** según renta.",
+      fa: "Un plan estatal para **aprender las lenguas cooficiales**, manteniendo la **inmersión en catalán** en Cataluña, y bajar los precios de la universidad **hasta hacerla gratuita**.",
     },
     implications: {
       vox: imp(
@@ -617,10 +618,10 @@ export const QUESTIONS: Question[] = [
     context:
       "En 2022 España apoyó el plan de autonomía de Marruecos para el Sáhara Occidental, antigua colonia española cuyo estatus sigue pendiente en la ONU.",
     options: {
-      vox: "Sancionar a Marruecos, suspender acuerdos con ese país y revisar a fondo la relación.",
-      pp: "Una relación más equilibrada con Marruecos y con Argelia.",
-      psoe: "Una Unión Europea más integrada en lo político y lo fiscal, con una defensa común.",
-      fa: "Retirar el apoyo al plan de autonomía marroquí para el Sáhara y apoyar un referéndum de autodeterminación.",
+      vox: "**Sancionar a Marruecos**, **suspender acuerdos** con ese país y revisar a fondo la relación.",
+      pp: "Una **relación más equilibrada con Marruecos y con Argelia**.",
+      psoe: "Una **Unión Europea más integrada** en lo político y lo fiscal, con una **defensa común**.",
+      fa: "**Retirar el apoyo al plan de autonomía marroquí** para el Sáhara y apoyar un **referéndum de autodeterminación**.",
     },
     implications: {
       vox: imp(
@@ -651,10 +652,10 @@ export const QUESTIONS: Question[] = [
     prompt: "Conflictos internacionales y soberanía",
     question: "¿Qué posición internacional apoyas?",
     options: {
-      vox: "Presionar internacionalmente para recuperar la soberanía de Gibraltar.",
-      pp: "Mantener el apoyo a Ucrania y respaldar expresamente a la líder opositora venezolana María Corina Machado.",
-      psoe: "Apoyar la soberanía de Ucrania y la solución de dos Estados para Israel y Palestina.",
-      fa: "Embargo total de armas a Israel, impedir el paso de material militar por España, suspender el Acuerdo de Asociación UE-Israel y reconocer plenamente a Palestina.",
+      vox: "Presionar internacionalmente para **recuperar la soberanía de Gibraltar**.",
+      pp: "Mantener el **apoyo a Ucrania** y respaldar expresamente a la líder opositora venezolana **María Corina Machado**.",
+      psoe: "Apoyar la **soberanía de Ucrania** y la **solución de dos Estados** para Israel y Palestina.",
+      fa: "**Embargo total de armas a Israel**, impedir el paso de material militar por España, **suspender el Acuerdo de Asociación UE-Israel** y **reconocer plenamente a Palestina**.",
     },
     implications: {
       vox: imp(
@@ -687,10 +688,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La «jurisdicción universal» permite a jueces españoles investigar crímenes como el genocidio cometidos fuera de España; se recortó en 2009 y 2014.",
     options: {
-      vox: "Reforzar con el Ejército las fronteras de Ceuta y Melilla y retirar la ayuda al desarrollo a los países que no controlen la emigración.",
-      pp: "Pedir a la UE que trate Ceuta y Melilla como su frontera con Rusia y rechazar en la frontera a quienes entren a nado.",
-      psoe: "Subir la ayuda al desarrollo hacia el 0,7 % de la renta nacional e impulsar un impuesto mínimo mundial a las grandes fortunas.",
-      fa: "Recuperar la jurisdicción universal y apoyar más a la Corte Internacional de Justicia y a la Corte Penal Internacional.",
+      vox: "**Reforzar con el Ejército las fronteras** de Ceuta y Melilla y **retirar la ayuda al desarrollo** a los países que no controlen la emigración.",
+      pp: "Pedir a la UE que trate Ceuta y Melilla como su **frontera con Rusia** y **rechazar en la frontera a quienes entren a nado**.",
+      psoe: "Subir la **ayuda al desarrollo hacia el 0,7 %** de la renta nacional e impulsar un **impuesto mínimo mundial a las grandes fortunas**.",
+      fa: "Recuperar la **jurisdicción universal** y apoyar más a la **Corte Internacional de Justicia** y a la **Corte Penal Internacional**.",
     },
     implications: {
       vox: imp(
@@ -725,10 +726,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Está previsto cerrar las centrales nucleares entre 2027 y 2035. Hoy la tecnología más cara que se necesita en cada hora (a menudo el gas) marca el precio de toda la electricidad: es el sistema «marginalista».",
     options: {
-      vox: "Mantener las centrales nucleares sin fecha de cierre y estudiar construir otras nuevas.",
-      pp: "Anular en 100 días el calendario de cierre de las nucleares y aprobar un plan para evitar nuevos apagones.",
-      psoe: "Mantener el cierre nuclear hasta 2035 e impulsar renovables, redes eléctricas, almacenamiento (baterías, bombeo) e hidrógeno verde.",
-      fa: "Cambiar el sistema marginalista de fijación del precio de la electricidad.",
+      vox: "**Mantener las centrales nucleares sin fecha de cierre** y estudiar **construir otras nuevas**.",
+      pp: "**Anular en 100 días el calendario de cierre de las nucleares** y aprobar un plan para **evitar nuevos apagones**.",
+      psoe: "**Mantener el cierre nuclear hasta 2035** e **impulsar renovables**, redes eléctricas, almacenamiento (baterías, bombeo) e hidrógeno verde.",
+      fa: "**Cambiar el sistema marginalista** de fijación del precio de la electricidad.",
     },
     implications: {
       vox: imp(
@@ -761,10 +762,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La factura incluye IVA, el impuesto especial sobre la electricidad y un impuesto del 7 % a la producción. Las «redes» son los cables que transportan y reparten la electricidad.",
     options: {
-      vox: "Bajar los impuestos de la luz y quitar los límites a la inversión en redes eléctricas.",
-      pp: "Suprimir el impuesto del 7 % a la producción de electricidad.",
-      psoe: "Un bono social único (luz, calefacción, transporte, telecomunicaciones y agua) que se conceda automáticamente, sin pedirlo, y reformar el mercado eléctrico para que el abaratamiento de las renovables llegue a hogares y empresas.",
-      fa: "Control público de las redes de distribución, una eléctrica pública y que las grandes líneas de alta tensión (más de 380 kV) sean de titularidad pública.",
+      vox: "**Bajar los impuestos de la luz** y **quitar los límites a la inversión en redes eléctricas**.",
+      pp: "**Suprimir el impuesto del 7 %** a la producción de electricidad.",
+      psoe: "Un **bono social único** (luz, calefacción, transporte, telecomunicaciones y agua) que **se conceda automáticamente**, sin pedirlo, y **reformar el mercado eléctrico** para que el abaratamiento de las renovables llegue a hogares y empresas.",
+      fa: "**Control público de las redes de distribución**, una **eléctrica pública** y que las grandes líneas de alta tensión (más de 380 kV) sean de **titularidad pública**.",
     },
     implications: {
       vox: imp(
@@ -801,10 +802,10 @@ export const QUESTIONS: Question[] = [
     prompt: "Transporte e infraestructuras",
     question: "¿Qué prioridad prefieres en transporte e infraestructuras?",
     options: {
-      vox: "Más inversión en carreteras, tren, agua y telecomunicaciones, revisar a fondo el estado de la red ferroviaria y mejorar Cercanías y Media Distancia.",
-      pp: "Un Plan Nacional de Infraestructuras de más de 300.000 M€ en 15 años, con participación de capital privado.",
-      psoe: "Unos 19.000 M€ para mantener la red ferroviaria en 2026-2030, reparar 5.000 km de carreteras estatales y limitar los vuelos cortos cuando haya alternativa directa en tren.",
-      fa: "Abono único de Cercanías de 20 € al mes (10 € para menores de 26 y gratis para menores de 16), fibra y 5G en zonas rurales y recuperar las paradas de autobús suprimidas.",
+      vox: "**Más inversión en carreteras, tren, agua y telecomunicaciones**, revisar a fondo el estado de la red ferroviaria y **mejorar Cercanías y Media Distancia**.",
+      pp: "Un **Plan Nacional de Infraestructuras de más de 300.000 M€** en 15 años, con participación de **capital privado**.",
+      psoe: "Unos **19.000 M€ para mantener la red ferroviaria** en 2026-2030, **reparar 5.000 km de carreteras** estatales y **limitar los vuelos cortos** cuando haya alternativa directa en tren.",
+      fa: "**Abono único de Cercanías de 20 € al mes** (10 € para menores de 26 y gratis para menores de 16), **fibra y 5G en zonas rurales** y recuperar las paradas de autobús suprimidas.",
     },
     implications: {
       vox: imp(
@@ -837,10 +838,10 @@ export const QUESTIONS: Question[] = [
     prompt: "Familia y natalidad",
     question: "¿Cómo apoyarías a las familias con hijos?",
     options: {
-      vox: "Un plan de natalidad con ventajas de familia numerosa desde el primer hijo, y que el Estado pague las cotizaciones de los españoles que se dediquen a cuidar a sus hijos.",
-      pp: "Una deducción fiscal única por familia, cobrada cada mes aunque no se pague IRPF, que cuente al hijo desde el embarazo.",
-      psoe: "Una prestación por crianza y una «Cuenta de Futuro» de 1.000 € para cada bebé al nacer.",
-      fa: "Una ayuda universal de 200 € al mes por cada hijo menor de 18 años.",
+      vox: "Un plan de natalidad con **ventajas de familia numerosa desde el primer hijo**, y que **el Estado pague las cotizaciones** de los españoles que se dediquen a cuidar a sus hijos.",
+      pp: "Una **deducción fiscal única por familia**, **cobrada cada mes** aunque no se pague IRPF, que cuente al hijo **desde el embarazo**.",
+      psoe: "Una **prestación por crianza** y una **«Cuenta de Futuro» de 1.000 €** para cada bebé al nacer.",
+      fa: "Una **ayuda universal de 200 € al mes por cada hijo** menor de 18 años.",
     },
     implications: {
       vox: imp(
@@ -873,10 +874,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La Ley de Violencia de Género (2004) protege específicamente a las mujeres frente a la violencia de su pareja o expareja, con juzgados y recursos propios.",
     options: {
-      vox: "Derogar las leyes de violencia de género y sustituirlas por normas de protección a las víctimas sin distinguir por sexo.",
-      pp: "Garantizar que funcionen bien las pulseras que controlan las órdenes de alejamiento, pasando su gestión al Ministerio del Interior con vigilancia policial continua.",
-      psoe: "Una ley para abolir la prostitución, leyes contra la violencia vicaria y la trata, y castigar como delito los deepfakes sexuales.",
-      fa: "Transparencia salarial y medidas contra la diferencia de sueldo entre hombres y mujeres.",
+      vox: "**Derogar las leyes de violencia de género** y sustituirlas por normas de protección a las víctimas **sin distinguir por sexo**.",
+      pp: "Garantizar que funcionen bien las **pulseras que controlan las órdenes de alejamiento**, pasando su gestión al **Ministerio del Interior** con vigilancia policial continua.",
+      psoe: "Una ley para **abolir la prostitución**, leyes contra la **violencia vicaria y la trata**, y castigar como delito los **deepfakes sexuales**.",
+      fa: "**Transparencia salarial** y medidas contra la **diferencia de sueldo entre hombres y mujeres**.",
     },
     implications: {
       vox: imp(
@@ -912,10 +913,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Desde 2023, la «Ley Trans» permite cambiar el sexo en el registro civil con una declaración, sin informes médicos (la «autodeterminación»). El aborto y la eutanasia son legales en España.",
     options: {
-      vox: "Proteger la vida desde la concepción hasta la muerte natural.",
-      pp: "Revisar la Ley Trans para eliminar el cambio de sexo en el registro por simple declaración.",
-      psoe: "Blindar el aborto, el matrimonio entre personas del mismo sexo y la eutanasia, y castigar las terapias de conversión.",
-      fa: "Reconocer legalmente a las personas no binarias y desarrollar la Ley Trans.",
+      vox: "**Proteger la vida desde la concepción hasta la muerte natural**.",
+      pp: "**Revisar la Ley Trans** para **eliminar el cambio de sexo en el registro por simple declaración**.",
+      psoe: "**Blindar el aborto, el matrimonio entre personas del mismo sexo y la eutanasia**, y castigar las **terapias de conversión**.",
+      fa: "**Reconocer legalmente a las personas no binarias** y **desarrollar la Ley Trans**.",
     },
     implications: {
       vox: imp(
@@ -950,10 +951,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La edad ordinaria de jubilación está subiendo hasta los 67 años en 2027. Revalorizar «con el IPC» significa subir las pensiones lo mismo que los precios.",
     options: {
-      vox: "Asegurar las pensiones haciendo crecer la economía, el empleo, los salarios y la natalidad.",
-      pp: "Subir las pensiones cada año con el IPC, garantizado por ley aunque no haya Presupuestos, y rebajas en el IRPF a quien siga trabajando después de la edad de jubilación.",
-      psoe: "Garantizar en la Constitución que las pensiones suban con el IPC, llevar 20.000 M€ al Fondo de Reserva y contar un año más cotizado por cada hijo.",
-      fa: "Volver a jubilarse a los 65 años (60 en construcción, limpieza, ayuda a domicilio, camareras de piso y pesca), sin recorte de pensión con 40 años cotizados, y que ninguna pensión sea inferior al salario mínimo.",
+      vox: "Asegurar las pensiones **haciendo crecer la economía, el empleo, los salarios y la natalidad**.",
+      pp: "**Subir las pensiones cada año con el IPC**, garantizado por ley aunque no haya Presupuestos, y **rebajas en el IRPF a quien siga trabajando** después de la edad de jubilación.",
+      psoe: "**Garantizar en la Constitución** que las pensiones suban con el IPC, llevar **20.000 M€ al Fondo de Reserva** y contar **un año más cotizado por cada hijo**.",
+      fa: "Volver a **jubilarse a los 65 años** (60 en construcción, limpieza, ayuda a domicilio, camareras de piso y pesca), sin recorte de pensión con 40 años cotizados, y que **ninguna pensión sea inferior al salario mínimo**.",
     },
     implications: {
       vox: imp(
@@ -986,10 +987,10 @@ export const QUESTIONS: Question[] = [
     context:
       "«Deflactar» el IRPF es actualizar sus tramos con la inflación, para que una subida de sueldo que solo compensa los precios no haga pagar más impuestos.",
     options: {
-      vox: "Un IRPF más sencillo, con tipos que bajan según el número de hijos.",
-      pp: "Deflactar el IRPF, subir el mínimo exento por persona y por familia, que el salario mínimo no pague IRPF y rebajar el IRPF a los jóvenes de 18 a 35 años en sus cuatro primeras declaraciones (100 %, 75 %, 50 % y 25 %).",
-      psoe: "Subir los impuestos a las rentas del capital (dividendos, intereses, plusvalías) a partir de 50.000 €, hasta el 35 % por encima de 300.000 €.",
-      fa: "Un impuesto a las grandes fortunas (2 % desde 1 M€ y 3 % desde 50 M€) y un impuesto estatal de sucesiones para herencias desde 1 M€.",
+      vox: "Un **IRPF más sencillo**, con **tipos que bajan según el número de hijos**.",
+      pp: "**Deflactar el IRPF**, subir el mínimo exento por persona y por familia, que **el salario mínimo no pague IRPF** y **rebajar el IRPF a los jóvenes** de 18 a 35 años en sus cuatro primeras declaraciones (100 %, 75 %, 50 % y 25 %).",
+      psoe: "**Subir los impuestos a las rentas del capital** (dividendos, intereses, plusvalías) a partir de 50.000 €, **hasta el 35 %** por encima de 300.000 €.",
+      fa: "Un **impuesto a las grandes fortunas** (2 % desde 1 M€ y 3 % desde 50 M€) y un **impuesto estatal de sucesiones** para herencias desde 1 M€.",
     },
     implications: {
       vox: imp(
@@ -1022,10 +1023,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El Impuesto sobre Sociedades grava los beneficios de las empresas. La «base máxima de cotización» es el sueldo a partir del cual ya no se cotiza más a la Seguridad Social.",
     options: {
-      vox: "Bajar el Impuesto de Sociedades, rebajar el IVA empezando por los productos básicos y gravar las remesas (el dinero que los inmigrantes envían a sus países).",
-      pp: "Que pague menos Impuesto de Sociedades la empresa que invierta en crecer, y eliminar los impuestos que frenan la inversión.",
-      psoe: "Subir el impuesto a la compra de acciones (tasa Tobin) del 0,2 % hasta el 0,4 %, un impuesto adicional a grandes tecnológicas y de IA, más impuestos a las empresas cotizadas cuyo consejero delegado cobre más de 100 veces el sueldo mediano, y una tasa a los viajes de lujo.",
-      fa: "Que las grandes empresas paguen como mínimo un 20 % real en Sociedades, subir la base máxima de cotización y eliminar las desgravaciones por planes de pensiones privados.",
+      vox: "**Bajar el Impuesto de Sociedades**, **rebajar el IVA** empezando por los productos básicos y **gravar las remesas** (el dinero que los inmigrantes envían a sus países).",
+      pp: "Que pague **menos Impuesto de Sociedades** la empresa que invierta en crecer, y **eliminar los impuestos que frenan la inversión**.",
+      psoe: "Subir el impuesto a la compra de acciones (**tasa Tobin**) del 0,2 % hasta el 0,4 %, un impuesto adicional a **grandes tecnológicas y de IA**, más impuestos a las empresas cotizadas cuyo consejero delegado cobre más de 100 veces el sueldo mediano, y una **tasa a los viajes de lujo**.",
+      fa: "Que las grandes empresas paguen como **mínimo un 20 % real en Sociedades**, **subir la base máxima de cotización** y **eliminar las desgravaciones por planes de pensiones privados**.",
     },
     implications: {
       vox: imp(
@@ -1063,10 +1064,10 @@ export const QUESTIONS: Question[] = [
     context:
       "En 2025 la OTAN acordó elevar el gasto en defensa al 5 % del PIB para 2035; España se desmarcó de ese objetivo. Hoy gasta en torno al 2 %.",
     options: {
-      vox: "Más presupuesto de defensa y mejores sueldos y vivienda para los militares.",
-      pp: "Una ley que planifique la inversión en defensa a varios años, priorizando drones y defensas contra ellos, defensa antiaérea, munición y ciberdefensa.",
-      psoe: "Rechazar subir el gasto militar al 5 % del PIB y apostar por una defensa común europea.",
-      fa: "Reducir el gasto militar, rechazar el 5 % de la OTAN y dedicar ese dinero a emergencias, sanidad y educación («seguridad humana»).",
+      vox: "**Más presupuesto de defensa** y **mejores sueldos y vivienda para los militares**.",
+      pp: "Una ley que **planifique la inversión en defensa** a varios años, priorizando **drones** y defensas contra ellos, defensa antiaérea, munición y ciberdefensa.",
+      psoe: "**Rechazar subir el gasto militar al 5 % del PIB** y apostar por una **defensa común europea**.",
+      fa: "**Reducir el gasto militar**, **rechazar el 5 % de la OTAN** y dedicar ese dinero a emergencias, sanidad y educación (**«seguridad humana»**).",
     },
     implications: {
       vox: imp(
@@ -1099,10 +1100,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La prisión permanente revisable (desde 2015) es una cadena perpetua que se revisa tras 25-35 años. La Ley de Seguridad Ciudadana de 2015, llamada «Ley Mordaza» por sus críticos, regula multas por protestas, desobediencia o grabar a policías.",
     options: {
-      vox: "Aplicar la prisión permanente revisable a más delitos y bajar la edad a partir de la cual se puede responder penalmente (hoy, 14 años).",
-      pp: "Aplicar la prisión permanente revisable a algunos asesinatos y a violadores reincidentes, castigar más a los delincuentes que reinciden muchas veces y ampliar los juicios rápidos.",
-      psoe: "Sustituir la Ley de Seguridad Ciudadana de 2015 y dotar de cámaras corporales a los agentes, con garantías de protección de datos.",
-      fa: "Derogar la «Ley Mordaza» y que las multas sean proporcionales a la renta de quien las paga.",
+      vox: "Aplicar la **prisión permanente revisable a más delitos** y **bajar la edad** a partir de la cual se puede responder penalmente (hoy, 14 años).",
+      pp: "Aplicar la **prisión permanente revisable** a algunos asesinatos y a violadores reincidentes, **castigar más a los delincuentes que reinciden** muchas veces y ampliar los **juicios rápidos**.",
+      psoe: "**Sustituir la Ley de Seguridad Ciudadana** de 2015 y dotar de **cámaras corporales** a los agentes, con garantías de protección de datos.",
+      fa: "**Derogar la «Ley Mordaza»** y que las **multas sean proporcionales a la renta** de quien las paga.",
     },
     implications: {
       vox: imp(
@@ -1135,10 +1136,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Ser «profesión de riesgo» permite jubilarse antes. La Guardia Civil es un cuerpo de naturaleza militar; la Policía Nacional es civil.",
     options: {
-      vox: "Que el Ejército participe en la protección de las fronteras y reconocer a Policía y Guardia Civil como profesión de riesgo.",
-      pp: "Reconocer a Policía y Guardia Civil como profesión de riesgo y más agentes en los barrios conflictivos.",
-      psoe: "Reforzar Policía y Guardia Civil y la lucha contra las estafas por internet, y modernizar las Fuerzas Armadas con más medios para la Unidad Militar de Emergencias (UME).",
-      fa: "Que la Guardia Civil deje de ser un cuerpo militar y reconocer a Guardia Civil y Policía Nacional como profesión de riesgo, con jubilación anticipada.",
+      vox: "Que el **Ejército participe en la protección de las fronteras** y reconocer a Policía y Guardia Civil como **profesión de riesgo**.",
+      pp: "Reconocer a Policía y Guardia Civil como **profesión de riesgo** y **más agentes en los barrios conflictivos**.",
+      psoe: "**Reforzar Policía y Guardia Civil** y la lucha contra las **estafas por internet**, y modernizar las Fuerzas Armadas con más medios para la **Unidad Militar de Emergencias** (UME).",
+      fa: "Que la **Guardia Civil deje de ser un cuerpo militar** y reconocer a Guardia Civil y Policía Nacional como **profesión de riesgo**, con **jubilación anticipada**.",
     },
     implications: {
       vox: imp(
@@ -1176,10 +1177,10 @@ export const QUESTIONS: Question[] = [
     context:
       "España invierte en I+D alrededor del 1,5 % del PIB (público y privado), por debajo de la media europea, cercana al 2,2 %.",
     options: {
-      vox: "Más gasto en investigación e innovación, ventajas fiscales para innovar y un plan para que vuelvan los investigadores que emigraron.",
-      pp: "Un IRPF del 20 % durante 6 años para los profesionales que se incorporen a grandes proyectos tecnológicos en España.",
-      psoe: "Inversión pública en I+D del 1,25 % del PIB (1,5 % en 2035) y un Estatuto del Personal Investigador.",
-      fa: "Un fondo público de inversión en tecnología e inversión a través de la banca pública.",
+      vox: "**Más gasto en investigación e innovación**, **ventajas fiscales** para innovar y un plan para que **vuelvan los investigadores** que emigraron.",
+      pp: "Un **IRPF del 20 % durante 6 años** para los profesionales que se incorporen a grandes proyectos tecnológicos en España.",
+      psoe: "Inversión pública en **I+D del 1,25 % del PIB** (1,5 % en 2035) y un **Estatuto del Personal Investigador**.",
+      fa: "Un **fondo público de inversión en tecnología** e inversión a través de la **banca pública**.",
     },
     implications: {
       vox: imp(
@@ -1212,10 +1213,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Hoy en España se puede abrir una cuenta en redes sociales sin permiso de los padres desde los 14 años, aunque la edad apenas se comprueba.",
     options: {
-      vox: "Proteger a los menores de los riesgos digitales (apuestas, pornografía), prohibir los móviles en clase y un plan nacional contra el acoso escolar y el ciberacoso.",
-      pp: "Prohibir las redes sociales a los menores de 14 años.",
-      psoe: "Una ley de protección de menores en internet que fije en 16 años la edad mínima para usar redes sociales.",
-      fa: "Regular con dureza las redes dirigidas a menores de 16 años, con verificación de edad que respete la privacidad y eliminando funciones adictivas (scroll infinito, reproducción automática, recomendaciones por algoritmo).",
+      vox: "**Proteger a los menores de los riesgos digitales** (apuestas, pornografía), **prohibir los móviles en clase** y un plan nacional contra el **acoso escolar y el ciberacoso**.",
+      pp: "**Prohibir las redes sociales a los menores de 14 años**.",
+      psoe: "Una ley de protección de menores en internet que fije en **16 años la edad mínima para usar redes sociales**.",
+      fa: "**Regular con dureza las redes** dirigidas a menores de 16 años, con **verificación de edad** que respete la privacidad y **eliminando funciones adictivas** (scroll infinito, reproducción automática, recomendaciones por algoritmo).",
     },
     implications: {
       vox: imp(
@@ -1252,10 +1253,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La «libertad de amortización» permite a una empresa restar de golpe en el Impuesto de Sociedades lo que invierte, en vez de repartirlo en varios años.",
     options: {
-      vox: "Impulsar la IA en la economía y en la Administración, pero manteniendo siempre la atención presencial.",
-      pp: "Que las empresas puedan desgravar de golpe lo que inviertan en maquinaria, digitalización o inteligencia artificial (libertad de amortización).",
-      psoe: "Supervisión humana de las decisiones de IA que afecten a derechos, auditorías, etiquetar los contenidos generados por IA y que los autores autoricen y cobren cuando sus obras se usen para entrenar IA.",
-      fa: "Un plan para que las pymes adopten la inteligencia artificial.",
+      vox: "**Impulsar la IA** en la economía y en la Administración, pero manteniendo siempre la **atención presencial**.",
+      pp: "Que las empresas puedan **desgravar de golpe** lo que inviertan en maquinaria, digitalización o inteligencia artificial (**libertad de amortización**).",
+      psoe: "**Supervisión humana** de las decisiones de IA que afecten a derechos, auditorías, **etiquetar los contenidos generados por IA** y que los **autores autoricen y cobren** cuando sus obras se usen para entrenar IA.",
+      fa: "Un plan para que las **pymes adopten la inteligencia artificial**.",
     },
     implications: {
       vox: imp(
@@ -1296,10 +1297,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El Pacto Verde Europeo fija la neutralidad climática en 2050 e incluye dejar de vender coches nuevos de gasolina y diésel a partir de 2035.",
     options: {
-      vox: "Rechazar el Pacto Verde Europeo y la Agenda 2030, y oponerse a prohibir los coches de combustión y a los impuestos sobre el CO₂.",
-      pp: "Revisar el plan de renovables para que todas las tecnologías compitan en igualdad en subastas, ayudas y regulación.",
-      psoe: "Que el 81 % de la electricidad sea renovable en 2030 y un plan para abandonar los combustibles fósiles.",
-      fa: "Un fondo público con al menos el 30 % de las nuevas instalaciones renovables y de almacenamiento, y que el diésel pague los mismos impuestos que la gasolina.",
+      vox: "**Rechazar el Pacto Verde Europeo y la Agenda 2030**, y oponerse a **prohibir los coches de combustión** y a los **impuestos sobre el CO₂**.",
+      pp: "Revisar el plan de renovables para que **todas las tecnologías compitan en igualdad** en subastas, ayudas y regulación.",
+      psoe: "Que el **81 % de la electricidad sea renovable en 2030** y un plan para **abandonar los combustibles fósiles**.",
+      fa: "Un fondo público con al menos el **30 % de las nuevas instalaciones renovables** y de almacenamiento, y que el **diésel pague los mismos impuestos que la gasolina**.",
     },
     implications: {
       vox: imp(
@@ -1338,10 +1339,10 @@ export const QUESTIONS: Question[] = [
     context:
       "La «interconexión de cuencas» (trasvases) consiste en llevar agua de ríos con excedente a zonas con escasez.",
     options: {
-      vox: "Un Plan Nacional del Agua que conecte las cuencas de los ríos mediante trasvases.",
-      pp: "Mantener, limpiar y ensanchar ríos, cauces y barrancos.",
-      psoe: "Bancos públicos de agua y una cantidad mínima de agua garantizada para los hogares vulnerables.",
-      fa: "Agua básica gratuita para los hogares vulnerables y prohibir que se les corte el suministro.",
+      vox: "Un **Plan Nacional del Agua** que conecte las cuencas de los ríos mediante **trasvases**.",
+      pp: "**Mantener, limpiar y ensanchar ríos**, cauces y barrancos.",
+      psoe: "**Bancos públicos de agua** y una **cantidad mínima de agua garantizada** para los hogares vulnerables.",
+      fa: "**Agua básica gratuita** para los hogares vulnerables y **prohibir que se les corte el suministro**.",
     },
     implications: {
       vox: imp(
@@ -1374,10 +1375,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Las zonas de bajas emisiones (ZBE) limitan la entrada de los coches más contaminantes en las ciudades de más de 50.000 habitantes. Hoy las emergencias las gestionan sobre todo las comunidades autónomas.",
     options: {
-      vox: "Eliminar las zonas de bajas emisiones, facilitar la minería y la extracción de recursos energéticos y limitar las grandes plantas solares en tierras de cultivo.",
-      pp: "Que el Estado intervenga desde el primer momento en las catástrofes.",
-      psoe: "Una Agencia Estatal de Protección Civil, un Fondo Nacional de Resiliencia Climática y restaurar ecosistemas.",
-      fa: "Obligar a instalar placas solares en los edificios de viviendas donde sea viable.",
+      vox: "**Eliminar las zonas de bajas emisiones**, **facilitar la minería** y la extracción de recursos energéticos y **limitar las grandes plantas solares** en tierras de cultivo.",
+      pp: "Que el **Estado intervenga desde el primer momento** en las catástrofes.",
+      psoe: "Una **Agencia Estatal de Protección Civil**, un **Fondo Nacional de Resiliencia Climática** y **restaurar ecosistemas**.",
+      fa: "**Obligar a instalar placas solares** en los edificios de viviendas donde sea viable.",
     },
     implications: {
       vox: imp(
@@ -1412,10 +1413,10 @@ export const QUESTIONS: Question[] = [
     context:
       "Mercosur es un acuerdo comercial entre la UE y varios países de Sudamérica. Las «cláusulas espejo» exigen que los productos importados cumplan las mismas normas que los europeos. La PAC es la Política Agrícola Común, que reparte las ayudas europeas al campo.",
     options: {
-      vox: "Rechazar el acuerdo UE-Mercosur, exigir cláusulas espejo a las importaciones y revisar las obligaciones medioambientales de agricultores y ganaderos.",
-      pp: "IVA del 0 % en alimentos básicos (carne, pescado, conservas) mientras duren los precios altos.",
-      psoe: "Que las ayudas de la PAC se centren en agricultores profesionales y en explotaciones familiares, pequeñas y medianas, y una Ley de Agricultura Familiar y Profesional.",
-      fa: "Transición a una agricultura ecológica, apoyo a la ganadería en pastos y reducir las emisiones de la agricultura, la ganadería y la pesca.",
+      vox: "**Rechazar el acuerdo UE-Mercosur**, exigir **cláusulas espejo** a las importaciones y **revisar las obligaciones medioambientales** de agricultores y ganaderos.",
+      pp: "**IVA del 0 % en alimentos básicos** (carne, pescado, conservas) mientras duren los precios altos.",
+      psoe: "Que las **ayudas de la PAC** se centren en **agricultores profesionales** y en explotaciones familiares, pequeñas y medianas, y una **Ley de Agricultura Familiar y Profesional**.",
+      fa: "Transición a una **agricultura ecológica**, apoyo a la **ganadería en pastos** y **reducir las emisiones** de la agricultura, la ganadería y la pesca.",
     },
     implications: {
       vox: imp(
@@ -1448,10 +1449,10 @@ export const QUESTIONS: Question[] = [
     context:
       "El «relevo generacional» es que haya jóvenes que tomen el testigo de los agricultores que se jubilan; hoy muy pocas explotaciones están en manos de menores de 40 años.",
     options: {
-      vox: "Apoyar el relevo generacional y las cooperativas, revisar la política pesquera y las cuotas de pesca de la UE y modernizar la flota.",
-      pp: "Un Pacto Nacional del Agua con hasta 40.000 M€ hasta 2030, también para los regadíos.",
-      psoe: "Modernizar los regadíos sin aumentar el consumo total de agua y crear bancos de tierras para el relevo generacional.",
-      fa: "Bancos públicos de tierras para nuevos agricultores y que la pesca con Marruecos se limite a sus aguas, sin incluir las del Sáhara Occidental.",
+      vox: "Apoyar el **relevo generacional y las cooperativas**, **revisar la política pesquera** y las cuotas de pesca de la UE y **modernizar la flota**.",
+      pp: "Un **Pacto Nacional del Agua** con **hasta 40.000 M€** hasta 2030, también para los **regadíos**.",
+      psoe: "**Modernizar los regadíos sin aumentar el consumo** total de agua y crear **bancos de tierras** para el relevo generacional.",
+      fa: "**Bancos públicos de tierras** para nuevos agricultores y que la **pesca con Marruecos se limite a sus aguas**, sin incluir las del Sáhara Occidental.",
     },
     implications: {
       vox: imp(

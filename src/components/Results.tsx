@@ -34,6 +34,7 @@ import {
 import { cn } from "@/lib/utils"
 
 import { AffinityRadars } from "./AffinityRadar"
+import { Emphasis } from "./Emphasis"
 import { ImplicationsPopover } from "./ImplicationsPopover"
 import { PartyMark } from "./PartyMark"
 import { QuestionSources } from "./QuestionSources"
@@ -379,7 +380,9 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
               <PartyMark party={p.id} size="sm" />
               <div className="min-w-0 flex-1 space-y-1">
                 <p className="text-xs font-medium text-(--party)">{p.name}</p>
-                <p className="leading-snug">{question.options[p.id]}</p>
+                <p className="leading-snug">
+                  <Emphasis text={question.options[p.id]} />
+                </p>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                 <ImplicationsPopover
                   implication={question.implications[p.id]}
