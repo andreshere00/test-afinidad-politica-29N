@@ -1,0 +1,109 @@
+# Test de afinidad · 29N
+
+Test de afinidad política basado en las medidas de Vox, PP, PSOE y Frente Amplio para las
+elecciones generales del 29 de noviembre de 2026.
+
+Cada pregunta presenta **una medida concreta de cada uno de los cuatro partidos** sobre el mismo
+subtema, en orden aleatorio y sin indicar de quién es. El usuario marca las que apoyaría. El
+partido de cada medida solo se revela en los resultados.
+
+**Stack:** React 19 · TypeScript · Vite · Tailwind CSS v4 · shadcn/ui (Radix) · Motion (animaciones) · Lucide (iconos).
+**Tipografías:** Roboto Slab (títulos) y Roboto (texto), vía `@fontsource`.
+
+## Requisitos
+
+Un gestor de paquetes con runtime de JavaScript. El proyecto se creó con [Bun](https://bun.sh)
+(recomendado), pero también funciona con Node.js 20+ y npm.
+
+Instalar Bun (macOS/Linux):
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+## Instalación
+
+Desde la carpeta del proyecto:
+
+```bash
+bun install
+```
+
+Con npm:
+
+```bash
+npm install
+```
+
+## Lanzar en local
+
+```bash
+bun run dev
+```
+
+Con npm:
+
+```bash
+npm run dev
+```
+
+Abre <http://localhost:5173>. El puerto está fijado en `vite.config.ts` (`strictPort`); si lo
+tienes ocupado, cámbialo allí.
+
+## Otros comandos
+
+| Comando | Qué hace |
+| --- | --- |
+| `bun run build` | Comprueba tipos y genera la versión de producción en `dist/` |
+| `bun run preview` | Sirve la build de producción en local |
+| `bun run lint` | Pasa oxlint |
+
+## Flujo
+
+1. Introducción.
+2. Paso 1: temas más importantes (3–5, cuentan ×2).
+3. Paso 2: temas menos importantes (1–3, cuentan ×0,5).
+4. Test: 38 preguntas (3 por tema; 2 en sector primario) con 4 medidas cada una.
+5. Resultados: afinidad por partido, afinidad por tema y de quién era cada medida, con enlace a la
+   fuente cuando la medida no procede del listado original.
+
+## Estructura
+
+- `src/data/topics.ts` – los 13 temas (con su icono de Lucide) y los límites de selección.
+- `src/data/parties.ts` – los 4 partidos. El campo opcional `logo` (p. ej. `/partidos/vox.svg` dentro
+  de `public/`) sustituye el monograma por un logotipo en escala de grises.
+- `src/data/questions.ts` – las preguntas: `prompt` (subtema), `options` (una medida por partido) y
+  `sources` (fuente de las medidas añadidas fuera del listado original).
+- `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
+- `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,
+  `PartyMark` (distintivo de partido); `ui/` contiene los componentes de shadcn.
+- `datos/` – el listado de medidas en CSV y XLSX, con las medidas añadidas y sus fuentes.
+
+## Cómo se calcula la afinidad
+
+1. En cada pregunta, cada medida marcada suma 1 a su partido; las no marcadas, 0.
+   «Ninguna me convence» cuenta como 0 para todos; «Prefiero no responder» no cuenta.
+2. Por tema: porcentaje de medidas de cada partido que el usuario ha apoyado.
+3. Total: media ponderada de los temas con los pesos del usuario (por defecto 7,69 % cada uno;
+   ×2 los importantes y ×0,5 los menos importantes, normalizado a 100 %).
+
+Todos los partidos se evalúan sobre las mismas preguntas.
+
+## Datos y fuentes (`datos/`)
+
+`medidas_partidos_29N.csv` y `.xlsx` son el listado original de medidas más 14 medidas añadidas el
+23/11/2026 para que cada pregunta tenga una medida de cada partido sobre el mismo subtema:
+
+- En el CSV y en la hoja «Comparativa», las medidas añadidas llevan `[Fuente: … – URL]` al final.
+- En la hoja «Formato largo» hay una columna nueva, «Fuente».
+- En la hoja «Fuentes» se han añadido las nuevas fuentes.
+
+Fuentes primarias usadas: los programas completos de Vox (PDF publicado por El Independiente) y de
+Frente Amplio (PDF publicado por Demócrata). Para PP y PSOE se usaron resúmenes de prensa del
+programa (Artículo14, Merca2, Tarifaluzhora), porque el PDF del PP supera el tamaño descargable.
+
+## Añadir o editar preguntas
+
+Añade un objeto a `QUESTIONS` en `src/data/questions.ts` con una medida para cada partido
+(`vox`, `pp`, `psoe`, `fa`). La app se adapta sola al número de preguntas (el enunciado pide
+entre 26 y 52).
