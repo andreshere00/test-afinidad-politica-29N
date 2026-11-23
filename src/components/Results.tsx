@@ -33,7 +33,7 @@ import {
 } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
 
-import { AversionRadars } from "./AversionRadar"
+import { AffinityRadars } from "./AffinityRadar"
 import { ImplicationsPopover } from "./ImplicationsPopover"
 import { PartyMark } from "./PartyMark"
 import { QuestionSources } from "./QuestionSources"
@@ -219,17 +219,16 @@ export function Results({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Animadversión por tema</CardTitle>
+          <CardTitle className="text-xl">Perfil de afinidad por tema</CardTitle>
           <CardDescription>
-            Porcentaje de las medidas de cada partido que no has apoyado en cada uno de los{" "}
-            {TOPICS.length} temas: cuanto más se aleja del centro, mayor rechazo. Las medidas sin
-            marcar y «Ninguna me convence» cuentan como rechazo; los temas sin respuestas se
-            muestran en el centro con un punto hueco. Pasa el ratón o el foco por un icono para ver
-            el dato.
+            Porcentaje de las medidas de cada partido que has apoyado en cada uno de los{" "}
+            {TOPICS.length} temas: cuanto más se aleja del centro, mayor afinidad. Los temas sin
+            respuestas se muestran en el centro con un punto hueco. Pasa el ratón o el foco por un
+            icono para ver el dato.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <AversionRadars results={results} />
+          <AffinityRadars results={results} />
         </CardContent>
       </Card>
 

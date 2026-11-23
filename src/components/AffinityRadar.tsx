@@ -9,13 +9,13 @@ import type { PartyResult } from "@/lib/scoring"
 import { PartyMark } from "./PartyMark"
 
 /**
- * Animadversión por tema = porcentaje de las medidas del partido en ese tema que el usuario NO
- * ha apoyado (100 % − afinidad del tema). `null` si el tema no tiene respuestas.
+ * Afinidad por tema = porcentaje de las medidas del partido en ese tema que el usuario ha apoyado.
+ * `null` si el tema no tiene respuestas.
  */
-function aversionByTopic(r: PartyResult): (number | null)[] {
+function affinityByTopic(r: PartyResult): (number | null)[] {
   return TOPICS.map((t) => {
     const s = r.topics[t.id].score
-    return s === null ? null : (1 - s) * 100
+    return s === null ? null : s * 100
   })
 }
 
@@ -33,20 +33,20 @@ function point(i: number, v: number, radius = R): [number, number] {
 
 const polygon = (values: number[]) => values.map((v, i) => point(i, v).join(",")).join(" ")
 
-/** Radar de un partido: 13 ejes (uno por tema), de 0 % (centro) a 100 % de rechazo (borde). */
+/** Radar de un partido: 13 ejes (uno por tema), de 0 % (centro) a 100 % de afinidad (borde). */
 function Radar({ result, delay }: { result: PartyResult; delay: number }) {
   const [active, setActive] = useState<number | null>(null)
-  const values = aversionByTopic(result)
+  const values = affinityByTopic(result)
   const plotted = values.map((v) => v ?? 0)
   const party = PARTY_BY_ID[result.partyId]
-  const overall = 100 - result.affinity
+  const overall = result.affinity
   const answered = values.filter((v): v is number => v !== null)
   const max = answered.length > 0 ? Math.max(...answered) : null
-  // Temas empatados en el máximo rechazo (si hay más de uno, se nombra el primero y se cuentan el resto).
+  // Temas empatados en la máxima afinidad (si hay más de uno, se nombra el primero y se cuentan el resto).
   const tied = max === null ? [] : TOPICS.filter((_, i) => values[i] === max)
   const top = max !== null && max > 0 ? { v: max, name: tied[0].name, more: tied.length - 1 } : null
 
-  const summary = `${party.name}: rechazo medio ${formatPercent(overall, 0)}. ${TOPICS.map(
+  const summary = `${party.name}: afinidad ${formatPercent(overall, 0)}. ${TOPICS.map(
     (t, i) => `${t.name} ${values[i] === null ? "sin respuestas" : formatPercent(values[i]!, 0)}`
   ).join("; ")}.`
 
@@ -65,7 +65,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
           {party.name}
         </span>
         <span className="text-right text-xs text-muted-foreground">
-          Rechazo medio{" "}
+          Afinidad{" "}
           <strong className="font-heading text-base font-semibold text-foreground tabular-nums">
             {formatPercent(overall, 0)}
           </strong>
@@ -138,7 +138,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
                 key={t.id}
                 tabIndex={0}
                 role="button"
-                aria-label={`${t.name}: ${values[i] === null ? "sin respuestas" : `${formatPercent(values[i]!, 0)} de rechazo`}`}
+                aria-label={`${t.name}: ${values[i] === null ? "sin respuestas" : `${formatPercent(values[i]!, 0)} de afinidad`}`}
                 onMouseEnter={() => setActive(i)}
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(i)}
@@ -176,7 +176,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
                 "Sin respuestas en este tema"
               ) : (
                 <>
-                  Rechazas el{" "}
+                  Apoyas el{" "}
                   <strong className="font-medium text-foreground tabular-nums">
                     {formatPercent(values[active]!, 0)}
                   </strong>{" "}
@@ -190,7 +190,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
 
       {top && (
         <p className="mt-1 text-center text-xs text-muted-foreground">
-          Mayor rechazo: <span className="text-foreground">{top.name}</span>
+          Mayor afinidad: <span className="text-foreground">{top.name}</span>
           {top.more > 0 && ` y ${top.more} ${top.more === 1 ? "tema" : "temas"} más`} (
           {formatPercent(top.v, 0)})
         </p>
@@ -200,7 +200,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
 }
 
 /** Cuadrícula de radares, uno por partido, en el mismo orden que la clasificación. */
-export function AversionRadars({ results }: { results: PartyResult[] }) {
+export function AffinityRadars({ results }: { results: PartyResult[] }) {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
