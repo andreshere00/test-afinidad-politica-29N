@@ -14,6 +14,7 @@ import type { Answer, Answers } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
 
 import { ImplicationsPopover } from "./ImplicationsPopover"
+import { QuestionSources } from "./QuestionSources"
 
 const LETTERS = ["A", "B", "C", "D"]
 
@@ -116,8 +117,12 @@ function QuestionStep({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!isPresent || e.metaKey || e.ctrlKey || e.altKey) return
-      // Con el foco en «¿Qué implica?», Intro abre el panel en vez de avanzar.
-      if (e.target instanceof Element && e.target.closest("[data-slot^=popover]")) return
+      // Con el foco en «¿Qué implica?», las fuentes o un enlace, Intro actúa sobre ellos en vez de avanzar.
+      if (
+        e.target instanceof Element &&
+        e.target.closest("[data-slot^=popover], [data-slot^=collapsible], a")
+      )
+        return
       if (e.key >= "1" && e.key <= "4") toggle(order[Number(e.key) - 1])
       else if (e.key === "Enter" && draft.length > 0) onCommit(draft)
       else if (e.key === "0") onCommit(null)
@@ -204,6 +209,8 @@ function QuestionStep({
             Prefiero no responder
           </Button>
         </div>
+
+        <QuestionSources question={question} />
       </CardContent>
 
       <CardFooter className="mt-6 justify-between">

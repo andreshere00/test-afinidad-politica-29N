@@ -34,6 +34,7 @@ import { cn } from "@/lib/utils"
 
 import { ImplicationsPopover } from "./ImplicationsPopover"
 import { PartyMark } from "./PartyMark"
+import { QuestionSources } from "./QuestionSources"
 
 interface Props {
   mode: TestMode
@@ -329,6 +330,7 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
           )
         })}
       </ul>
+      <QuestionSources question={question} />
     </li>
   )
 }

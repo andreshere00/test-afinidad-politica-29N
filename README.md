@@ -82,6 +82,9 @@ tienes ocupado, cámbialo allí.
   listado original).
 - `src/components/ImplicationsPopover.tsx` – el panel «¿Qué implica?» (se abre al pasar el ratón o
   al pulsar/tocar).
+- `src/data/references.ts` – fuentes de cada pregunta: normas y datos oficiales del contexto (BOE,
+  INE, Eurostat, UE…) y los programas de los cuatro partidos. Se muestran en el desplegable «Fuentes
+  de esta pregunta» (`QuestionSources`) sin asociarlas a ninguna medida, para no delatar al partido.
 - `src/data/modes.ts` – versiones del test (rápido y completo) y qué preguntas entran en el rápido.
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,
