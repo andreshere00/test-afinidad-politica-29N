@@ -9,6 +9,9 @@ partido de cada medida solo se revela en los resultados.
 
 **Stack:** React 19 · TypeScript · Vite · Tailwind CSS v4 · shadcn/ui (Radix) · Motion (animaciones) · Lucide (iconos).
 **Tipografías:** Roboto Slab (títulos) y Roboto (texto), vía `@fontsource`.
+**Tema:** claro, oscuro o el del sistema (selector en la cabecera; la elección se guarda en el
+navegador). Los colores son los tokens de `src/index.css` (`:root` y `.dark`); la lógica está en
+`src/lib/theme.ts` y un script en `index.html` aplica el tema antes de pintar para evitar destellos.
 
 ## Requisitos
 

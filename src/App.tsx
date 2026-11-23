@@ -5,6 +5,7 @@ import { Intro } from "@/components/Intro"
 import { Priorities } from "@/components/Priorities"
 import { Quiz } from "@/components/Quiz"
 import { Results } from "@/components/Results"
+import { ThemeToggle } from "@/components/ThemeToggle"
 import { MODES, type TestMode } from "@/data/modes"
 import { PARTIES, type PartyId } from "@/data/parties"
 import { QUESTIONS, type Question } from "@/data/questions"
@@ -88,7 +89,12 @@ export default function App() {
           <span className="font-heading text-lg font-bold tracking-tight">
             Test de afinidad · 29N
           </span>
-          <span className="text-xs text-muted-foreground">Herramienta orientativa</span>
+          <div className="flex items-center gap-3">
+            <span className="hidden text-xs text-muted-foreground sm:inline">
+              Herramienta orientativa
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
