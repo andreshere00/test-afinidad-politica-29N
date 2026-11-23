@@ -33,6 +33,11 @@ interface Props {
   onSkip?: () => void
 }
 
+/** «Elige hasta 5 (opcional).» o «Elige entre 3 y 5.» según el mínimo configurado. */
+function range(min: number, max: number): string {
+  return min === 0 ? `Elige hasta ${max} (opcional).` : `Elige entre ${min} y ${max}.`
+}
+
 function toggle(list: TopicId[], id: TopicId, max: number): TopicId[] {
   if (list.includes(id)) return list.filter((t) => t !== id)
   return list.length >= max ? list : [...list, id]
@@ -45,11 +50,11 @@ export function Priorities({ mode, high, low, onChange, onBack, onContinue, onSk
   const valid = selected.length >= min && selected.length <= max
   const weights = computeWeights(high, low)
 
-  const hint = valid
-    ? "Listo. Puedes continuar."
-    : selected.length < min
-      ? `Elige al menos ${min - selected.length} más.`
-      : ""
+  const hint = !valid
+    ? `Elige al menos ${min - selected.length} más.`
+    : selected.length === 0
+      ? "Opcional: puedes continuar sin elegir ninguno."
+      : "Listo. Puedes continuar."
 
   return (
     <Card>
@@ -60,8 +65,8 @@ export function Priorities({ mode, high, low, onChange, onBack, onContinue, onSk
         </CardTitle>
         <CardDescription>
           {isHigh
-            ? `Elige entre ${HIGH_MIN} y ${HIGH_MAX}. Contarán el doble (${HIGH_LABEL}) en tu resultado.`
-            : `Elige entre ${LOW_MIN} y ${LOW_MAX}. Contarán la mitad (${LOW_LABEL}). El resto cuenta de forma normal.`}
+            ? `${range(HIGH_MIN, HIGH_MAX)} Contarán el doble (${HIGH_LABEL}) en tu resultado. Si no eliges ninguno, todos los temas cuentan igual.`
+            : `${range(LOW_MIN, LOW_MAX)} Contarán la mitad (${LOW_LABEL}). El resto cuenta de forma normal. Puedes continuar sin elegir ninguno.`}
         </CardDescription>
       </CardHeader>
 

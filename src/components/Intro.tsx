@@ -81,7 +81,7 @@ export function Intro({ mode, onModeChange, onStart }: Props) {
         </div>
 
         <ol className="list-decimal space-y-1 pl-5 marker:text-muted-foreground">
-          <li>Elige qué temas te importan más y cuáles menos.</li>
+          <li>Si quieres, elige qué temas te importan más y cuáles menos (opcional).</li>
           <li>
             Marca las medidas que apoyarías ({current.questions.length} preguntas,{" "}
             {current.duration}).

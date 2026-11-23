@@ -57,7 +57,8 @@ export const TOPIC_BY_ID = Object.fromEntries(
   TOPICS.map((t) => [t.id, t])
 ) as Record<TopicId, Topic>
 
-export const HIGH_MIN = 3
+/** Elegir temas es opcional: sin selección, todos cuentan igual (7,69 %). */
+export const HIGH_MIN = 0
 export const HIGH_MAX = 5
-export const LOW_MIN = 1
+export const LOW_MIN = 0
 export const LOW_MAX = 3
