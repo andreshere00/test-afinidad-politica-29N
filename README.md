@@ -78,7 +78,10 @@ tienes ocupado, cámbialo allí.
 
 - `src/data/topics.ts` – los 13 temas (con su icono de Lucide) y los límites de selección.
 - `src/data/parties.ts` – los 4 partidos. El campo opcional `logo` (p. ej. `/partidos/vox.svg` dentro
-  de `public/`) sustituye el monograma por un logotipo en escala de grises.
+  de `public/`) sustituye el monograma por un logotipo. Los colores de cada partido son los tokens
+  `--party-*` de `src/index.css` (con variante para modo oscuro) y se aplican con `partyStyle()`
+  solo en los resultados (distintivos, barras, radares, nombres, fuentes y «¿Qué implica?»), nunca
+  durante el test.
 - `src/data/questions.ts` – las preguntas: `prompt` (subtema), `question` (la pregunta en lenguaje
   llano), `context` (glosario o contexto breve), `options` (una medida por partido, redactada sin
   tecnicismos), `implications` (qué cambiaría y argumentos a favor y en contra de cada medida, en

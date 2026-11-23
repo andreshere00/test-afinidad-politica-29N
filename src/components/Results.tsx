@@ -17,7 +17,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { Progress } from "@/components/ui/progress"
-import { PARTIES, PARTY_BY_ID, type PartyId } from "@/data/parties"
+import { PARTIES, PARTY_BY_ID, partyStyle, type PartyId } from "@/data/parties"
 import { MODES, type TestMode } from "@/data/modes"
 import type { Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
@@ -92,13 +92,14 @@ export function Results({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + i * 0.08, duration: 0.3 }}
                 className="flex items-center gap-4"
+                style={partyStyle(r.partyId)}
               >
-                <PartyMark party={r.partyId} size="lg" className={cn(i > 0 && "opacity-70")} />
+                <PartyMark party={r.partyId} size="lg" />
                 <div className="min-w-0 flex-1 space-y-2">
                   <div className="flex items-baseline justify-between gap-3">
                     <span
                       className={cn(
-                        "font-heading text-lg sm:text-xl",
+                        "font-heading text-lg text-(--party) sm:text-xl",
                         i === 0 ? "font-semibold" : "font-medium"
                       )}
                     >
@@ -119,10 +120,7 @@ export function Results({
                   <Progress
                     value={r.affinity}
                     aria-label={`Afinidad con ${PARTY_BY_ID[r.partyId].name}`}
-                    className={cn(
-                      "h-2.5",
-                      i > 0 && "[&_[data-slot=progress-indicator]]:bg-foreground/45"
-                    )}
+                    className="h-2.5 bg-(--party)/15 [&_[data-slot=progress-indicator]]:bg-(--party)"
                   />
                   <p className="text-xs text-muted-foreground">
                     Has apoyado {r.supported} de sus {r.answered} medidas.
@@ -134,7 +132,10 @@ export function Results({
           {answered > 0 && (
             <p className="mt-6 rounded-lg bg-muted px-4 py-3 text-sm">
               Tus respuestas coinciden más con las medidas de{" "}
-              <strong className="font-medium">{PARTY_BY_ID[top.partyId].name}</strong>. El
+              <strong className="font-medium text-(--party)" style={partyStyle(top.partyId)}>
+                {PARTY_BY_ID[top.partyId].name}
+              </strong>
+              . El
               resultado es orientativo y depende de las medidas incluidas en el test.
             </p>
           )}
@@ -200,10 +201,11 @@ export function Results({
                       return (
                         <td
                           key={p.id}
+                          style={partyStyle(p.id)}
                           className={cn(
                             "px-2 py-2 text-right tabular-nums",
                             s === null && "text-muted-foreground",
-                            s !== null && s > 0 && s === best && "font-semibold"
+                            s !== null && s > 0 && s === best && "font-semibold text-(--party)"
                           )}
                         >
                           {s === null ? "—" : formatPercent(s * 100, 0)}
@@ -353,22 +355,28 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
           return (
             <li
               key={p.id}
+              style={partyStyle(p.id)}
               className={cn(
-                "flex items-start gap-3 rounded-lg border p-3",
-                supported ? "border-foreground/60 bg-muted" : "border-border/60"
+                "flex items-start gap-3 rounded-lg border border-l-4 border-l-(--party) p-3",
+                supported ? "border-(--party)/60 bg-(--party)/8" : "border-border/60"
               )}
             >
               <PartyMark party={p.id} size="sm" />
               <div className="min-w-0 flex-1 space-y-1">
+                <p className="text-xs font-medium text-(--party)">{p.name}</p>
                 <p className="leading-snug">{question.options[p.id]}</p>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <ImplicationsPopover implication={question.implications[p.id]} />
+                <ImplicationsPopover
+                  implication={question.implications[p.id]}
+                  party={p.id}
+                  className="text-(--party) hover:text-(--party)"
+                />
                 {source && (
                   <a
                     href={source.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
+                    className="inline-flex items-center gap-1 text-xs text-(--party) underline underline-offset-2 hover:opacity-80"
                   >
                     Fuente: {source.label}
                     <ExternalLink className="size-3" aria-hidden />
@@ -377,7 +385,7 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
                 </div>
               </div>
               {supported && (
-                <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium">
+                <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-(--party)">
                   <Check className="size-3.5" aria-hidden />
                   Apoyada
                 </span>

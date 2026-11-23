@@ -1,7 +1,7 @@
 import { motion } from "motion/react"
 import { useState } from "react"
 
-import { PARTY_BY_ID } from "@/data/parties"
+import { PARTY_BY_ID, partyStyle } from "@/data/parties"
 import { TOPICS } from "@/data/topics"
 import { formatPercent } from "@/lib/format"
 import type { PartyResult } from "@/lib/scoring"
@@ -57,10 +57,11 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.3 }}
-      className="rounded-xl border p-4"
+      className="rounded-xl border border-t-4 border-t-(--party) p-4"
+      style={partyStyle(result.partyId)}
     >
       <figcaption className="flex items-center justify-between gap-3">
-        <span className="flex items-center gap-2 font-heading font-medium">
+        <span className="flex items-center gap-2 font-heading font-medium text-(--party)">
           <PartyMark party={result.partyId} size="sm" />
           {party.name}
         </span>
@@ -107,7 +108,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: delay + 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformOrigin: `${C}px ${C}px` }}
-            className="fill-foreground/12 stroke-foreground"
+            className="fill-(--party)/15 stroke-(--party)"
             strokeWidth={2}
             strokeLinejoin="round"
           />
@@ -121,7 +122,7 @@ function Radar({ result, delay }: { result: PartyResult; delay: number }) {
                 cy={y}
                 r={active === i ? 5.5 : 4}
                 className={
-                  empty ? "fill-background stroke-muted-foreground" : "fill-foreground stroke-card"
+                  empty ? "fill-background stroke-muted-foreground" : "fill-(--party) stroke-card"
                 }
                 strokeWidth={2}
               />

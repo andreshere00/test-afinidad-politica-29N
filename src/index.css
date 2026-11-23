@@ -86,9 +86,21 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
+    /* Colores de partido (solo en resultados). Contraste ≥ 4,5:1 sobre el fondo. */
+    --party-vox: #367a0e;
+    --party-pp: #1d4f9c;
+    --party-psoe: #c8102e;
+    --party-fa: #7a2e91;
+    /* Texto sobre un fondo de color de partido. */
+    --party-foreground: #ffffff;
 }
 
 .dark {
+    --party-vox: #7dd33f;
+    --party-pp: #6aa5f0;
+    --party-psoe: #ff6b6b;
+    --party-fa: #c98be0;
+    --party-foreground: oklch(0.145 0 0);
     color-scheme: dark;
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);

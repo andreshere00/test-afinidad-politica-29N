@@ -2,6 +2,7 @@ import { ArrowRight, Info, Minus, Plus } from "lucide-react"
 import { useEffect, useRef, useState, type PointerEvent } from "react"
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { PARTY_BY_ID, partyStyle, type PartyId } from "@/data/parties"
 import type { Implication } from "@/data/questions"
 import { cn } from "@/lib/utils"
 
@@ -15,9 +16,12 @@ const CLOSE_DELAY = 150
  */
 export function ImplicationsPopover({
   implication,
+  party,
   className,
 }: {
   implication: Implication
+  /** Solo en resultados: tiñe el panel con el color del partido. Nunca durante el test. */
+  party?: PartyId
   className?: string
 }) {
   const [open, setOpen] = useState(false)
@@ -73,11 +77,20 @@ export function ImplicationsPopover({
       <PopoverContent
         align="start"
         collisionPadding={16}
-        className="w-80 max-w-[calc(100vw-2rem)] gap-3 p-4 sm:w-96"
+        style={party ? partyStyle(party) : undefined}
+        className={cn(
+          "w-80 max-w-[calc(100vw-2rem)] gap-3 p-4 sm:w-96",
+          party && "border-t-4 border-t-(--party)"
+        )}
         onOpenAutoFocus={(e) => e.preventDefault()}
         onPointerEnter={(e) => e.pointerType === "mouse" && clearTimer()}
         onPointerLeave={onHoverEnd}
       >
+        {party && (
+          <p className="font-heading text-sm font-semibold text-(--party)">
+            Medida de {PARTY_BY_ID[party].name}
+          </p>
+        )}
         <Section icon={ArrowRight} title="Qué cambiaría">
           {implication.effect}
         </Section>

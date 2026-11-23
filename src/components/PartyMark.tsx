@@ -1,4 +1,4 @@
-import { PARTY_BY_ID, type PartyId } from "@/data/parties"
+import { PARTY_BY_ID, partyStyle, type PartyId } from "@/data/parties"
 import { cn } from "@/lib/utils"
 
 const SIZES = {
@@ -7,7 +7,7 @@ const SIZES = {
   lg: "size-12 text-xs",
 } as const
 
-/** Distintivo neutro (monograma en escala de grises) o logotipo del partido si está configurado. */
+/** Distintivo del partido: monograma sobre su color, o su logotipo si está configurado. */
 export function PartyMark({
   party,
   size = "md",
@@ -25,7 +25,7 @@ export function PartyMark({
         src={p.logo}
         alt=""
         aria-hidden
-        className={cn("shrink-0 rounded-full bg-card object-contain grayscale", SIZES[size], className)}
+        className={cn("shrink-0 rounded-full bg-card object-contain", SIZES[size], className)}
       />
     )
   }
@@ -33,8 +33,9 @@ export function PartyMark({
   return (
     <span
       aria-hidden
+      style={partyStyle(party)}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-full bg-foreground font-heading font-bold tracking-tight text-background ring-2 ring-background",
+        "inline-flex shrink-0 items-center justify-center rounded-full bg-(--party) font-heading font-bold tracking-tight text-(--party-foreground) ring-2 ring-background",
         SIZES[size],
         className
       )}
