@@ -1,4 +1,4 @@
-import { Check, ChevronDown, ExternalLink } from "lucide-react"
+import { Check, ChevronDown, ExternalLink, MessageCircle } from "lucide-react"
 import { motion } from "motion/react"
 import { useMemo } from "react"
 
@@ -28,6 +28,7 @@ import {
   LOW_LABEL,
   type Answer,
   type Answers,
+  type PartyResult,
   type Weights,
 } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
@@ -282,13 +283,37 @@ export function Results({
         </CardContent>
       </Card>
 
-      <div className="flex justify-end">
+      <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+        <Button asChild size="lg" variant="outline" className="h-10 px-5">
+          <a href={whatsappUrl(results, mode)} target="_blank" rel="noreferrer">
+            <MessageCircle aria-hidden />
+            Compartir en WhatsApp
+          </a>
+        </Button>
         <Button size="lg" className="h-10 px-5" onClick={onRestart}>
           Repetir el test
         </Button>
       </div>
     </div>
   )
+}
+
+/**
+ * Enlace de WhatsApp con el resultado (solo porcentajes por partido, sin respuestas concretas)
+ * y la dirección del test. wa.me abre la app en el móvil y WhatsApp Web en el escritorio.
+ */
+function whatsappUrl(results: PartyResult[], mode: TestMode): string {
+  const lines = results.map(
+    (r, i) => `${i + 1}. ${PARTY_BY_ID[r.partyId].name}: ${formatPercent(r.affinity, 0)}`
+  )
+  const url = `${window.location.origin}${window.location.pathname}`
+  const text = [
+    `Mi afinidad en el Test de afinidad · 29N (${MODES[mode].name.toLowerCase()}):`,
+    ...lines,
+    "",
+    `¿Con qué programa coincides tú? ${url}`,
+  ].join("\n")
+  return `https://wa.me/?text=${encodeURIComponent(text)}`
 }
 
 function QuestionReveal({ question, answer }: { question: Question; answer: Answer | undefined }) {
