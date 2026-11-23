@@ -18,7 +18,8 @@ import {
 } from "@/components/ui/collapsible"
 import { Progress } from "@/components/ui/progress"
 import { PARTIES, PARTY_BY_ID, type PartyId } from "@/data/parties"
-import { QUESTIONS, type Question } from "@/data/questions"
+import { MODES, type TestMode } from "@/data/modes"
+import type { Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
 import { formatPercent, formatWeight } from "@/lib/format"
 import {
@@ -35,25 +36,46 @@ import { ImplicationsPopover } from "./ImplicationsPopover"
 import { PartyMark } from "./PartyMark"
 
 interface Props {
+  mode: TestMode
+  /** Preguntas del test realizado. */
+  questions: Question[]
   answers: Answers
   weights: Weights
   high: TopicId[]
   low: TopicId[]
   onRestart: () => void
+  /** Solo en el test rápido: completar con las preguntas que faltan del test completo. */
+  onExtend?: () => void
 }
 
-export function Results({ answers, weights, high, low, onRestart }: Props) {
-  const results = useMemo(() => computeResults(answers, weights), [answers, weights])
-  const answered = QUESTIONS.filter((q) => Array.isArray(answers[q.id])).length
+export function Results({
+  mode,
+  questions,
+  answers,
+  weights,
+  high,
+  low,
+  onRestart,
+  onExtend,
+}: Props) {
+  const results = useMemo(
+    () => computeResults(answers, weights, questions),
+    [answers, weights, questions]
+  )
+  const answered = questions.filter((q) => Array.isArray(answers[q.id])).length
   const top = results[0]
+  const missing = MODES.full.questions.length - questions.length
 
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl sm:text-3xl">Tu afinidad</CardTitle>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <CardTitle className="text-2xl sm:text-3xl">Tu afinidad</CardTitle>
+            <Badge variant="secondary">{MODES[mode].name}</Badge>
+          </div>
           <CardDescription>
-            Has respondido {answered} de {QUESTIONS.length} preguntas. La afinidad es el
+            Has respondido {answered} de {questions.length} preguntas. La afinidad es el
             porcentaje de medidas de cada partido que has apoyado, ponderado por tema.
           </CardDescription>
         </CardHeader>
@@ -111,6 +133,17 @@ export function Results({ answers, weights, high, low, onRestart }: Props) {
               <strong className="font-medium">{PARTY_BY_ID[top.partyId].name}</strong>. El
               resultado es orientativo y depende de las medidas incluidas en el test.
             </p>
+          )}
+          {onExtend && missing > 0 && (
+            <div className="mt-4 flex flex-col gap-3 rounded-lg border px-4 py-3 text-sm sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-muted-foreground">
+                Has hecho el test rápido. Responde las {missing} preguntas que faltan para obtener
+                el resultado completo; se conservan tus respuestas.
+              </p>
+              <Button variant="outline" className="shrink-0" onClick={onExtend}>
+                Completar el test
+              </Button>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -200,7 +233,7 @@ export function Results({ answers, weights, high, low, onRestart }: Props) {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <ul className="divide-y border-t">
-                  {QUESTIONS.filter((q) => q.topic === t.id).map((q) => (
+                  {questions.filter((q) => q.topic === t.id).map((q) => (
                     <QuestionReveal key={q.id} question={q} answer={answers[q.id]} />
                   ))}
                 </ul>

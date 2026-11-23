@@ -60,12 +60,15 @@ tienes ocupado, cámbialo allí.
 
 ## Flujo
 
-1. Introducción.
+1. Introducción y elección de versión:
+   - **Test rápido** (por defecto, 5-10 min): 26 preguntas, 2 por tema.
+   - **Test completo** (12-15 min): 38 preguntas, 3 por tema (2 en sector primario).
 2. Paso 1: temas más importantes (3–5, cuentan ×2).
 3. Paso 2: temas menos importantes (1–3, cuentan ×0,5).
-4. Test: 38 preguntas (3 por tema; 2 en sector primario) con 4 medidas cada una.
+4. Test: cada pregunta tiene 4 medidas.
 5. Resultados: afinidad por partido, afinidad por tema y de quién era cada medida, con enlace a la
-   fuente cuando la medida no procede del listado original.
+   fuente cuando la medida no procede del listado original. Tras el test rápido, «Completar el
+   test» plantea solo las 12 preguntas que faltan y conserva las respuestas.
 
 ## Estructura
 
@@ -79,6 +82,7 @@ tienes ocupado, cámbialo allí.
   listado original).
 - `src/components/ImplicationsPopover.tsx` – el panel «¿Qué implica?» (se abre al pasar el ratón o
   al pulsar/tocar).
+- `src/data/modes.ts` – versiones del test (rápido y completo) y qué preguntas entran en el rápido.
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,
   `PartyMark` (distintivo de partido); `ui/` contiene los componentes de shadcn.

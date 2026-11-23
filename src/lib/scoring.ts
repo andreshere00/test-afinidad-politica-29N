@@ -1,5 +1,5 @@
 import { PARTIES, type PartyId } from "@/data/parties"
-import { QUESTIONS } from "@/data/questions"
+import { QUESTIONS, type Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
 
 /**
@@ -56,7 +56,11 @@ export interface PartyResult {
  * usuario ha apoyado. Cada pregunta tiene una medida de cada partido, así que todos los partidos
  * se evalúan sobre las mismas preguntas.
  */
-export function computeResults(answers: Answers, weights: Weights): PartyResult[] {
+export function computeResults(
+  answers: Answers,
+  weights: Weights,
+  questions: Question[] = QUESTIONS
+): PartyResult[] {
   const results = PARTIES.map((party): PartyResult => {
     const topics = {} as Record<TopicId, TopicScore>
     let weighted = 0
@@ -67,7 +71,7 @@ export function computeResults(answers: Answers, weights: Weights): PartyResult[
     for (const topic of TOPICS) {
       let answered = 0
       let supported = 0
-      for (const q of QUESTIONS) {
+      for (const q of questions) {
         if (q.topic !== topic.id) continue
         const a = answers[q.id]
         if (!Array.isArray(a)) continue

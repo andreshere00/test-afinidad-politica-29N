@@ -5,6 +5,7 @@ import { Intro } from "@/components/Intro"
 import { Priorities } from "@/components/Priorities"
 import { Quiz } from "@/components/Quiz"
 import { Results } from "@/components/Results"
+import { MODES, type TestMode } from "@/data/modes"
 import { PARTIES, type PartyId } from "@/data/parties"
 import { QUESTIONS, type Question } from "@/data/questions"
 import type { TopicId } from "@/data/topics"
@@ -38,6 +39,9 @@ export default function App() {
   const [order, setOrder] = useState<Question[]>(QUESTIONS)
   const [optionOrder, setOptionOrder] = useState<Record<string, PartyId[]>>({})
   const [direction, setDirection] = useState(1)
+  const [mode, setMode] = useState<TestMode>("quick")
+  /** true cuando se completa el test rápido con las preguntas que faltan del completo. */
+  const [extending, setExtending] = useState(false)
 
   const goTo = (next: Stage) => {
     setDirection(Math.sign(STAGE_ORDER.indexOf(next) - STAGE_ORDER.indexOf(stage)) || 1)
@@ -46,13 +50,26 @@ export default function App() {
 
   const weights = useMemo(() => computeWeights(high, low), [high, low])
 
+  // Orden aleatorio de las cuatro medidas en cada pregunta, para no delatar al partido.
+  const shuffleOptions = (questions: Question[]) =>
+    Object.fromEntries(questions.map((q) => [q.id, shuffle(PARTIES.map((p) => p.id))]))
+
   const startQuiz = () => {
-    setOrder(shuffle(QUESTIONS))
-    // Orden aleatorio de las cuatro medidas en cada pregunta, para no delatar al partido.
-    setOptionOrder(
-      Object.fromEntries(QUESTIONS.map((q) => [q.id, shuffle(PARTIES.map((p) => p.id))]))
-    )
+    const questions = MODES[mode].questions
+    setOrder(shuffle(questions))
+    setOptionOrder(shuffleOptions(questions))
     setAnswers({})
+    setExtending(false)
+    goTo("quiz")
+  }
+
+  /** Pasa del test rápido al completo conservando las respuestas: solo pregunta lo que falta. */
+  const extendToFull = () => {
+    const remaining = MODES.full.questions.filter((q) => !(q.id in answers))
+    setMode("full")
+    setOrder(shuffle(remaining))
+    setOptionOrder((prev) => ({ ...prev, ...shuffleOptions(remaining) }))
+    setExtending(true)
     goTo("quiz")
   }
 
@@ -86,7 +103,9 @@ export default function App() {
             exit="exit"
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
-            {stage === "intro" && <Intro onStart={() => goTo("high")} />}
+            {stage === "intro" && (
+              <Intro mode={mode} onModeChange={setMode} onStart={() => goTo("high")} />
+            )}
 
             {stage === "high" && (
               <Priorities
@@ -127,18 +146,21 @@ export default function App() {
                 optionOrder={optionOrder}
                 answers={answers}
                 onAnswer={(id: string, a: Answer) => setAnswers((prev) => ({ ...prev, [id]: a }))}
-                onBack={() => goTo("low")}
+                onBack={() => goTo(extending ? "results" : "low")}
                 onFinish={() => goTo("results")}
               />
             )}
 
             {stage === "results" && (
               <Results
+                mode={mode}
+                questions={MODES[mode].questions}
                 answers={answers}
                 weights={weights}
                 high={high}
                 low={low}
                 onRestart={restart}
+                onExtend={mode === "quick" ? extendToFull : undefined}
               />
             )}
           </motion.div>
