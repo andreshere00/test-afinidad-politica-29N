@@ -1,3 +1,4 @@
+import { Lightbulb } from "lucide-react"
 import { AnimatePresence, motion, useIsPresent } from "motion/react"
 import { useEffect, useState } from "react"
 
@@ -11,6 +12,8 @@ import type { Question } from "@/data/questions"
 import { TOPIC_BY_ID } from "@/data/topics"
 import type { Answer, Answers } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
+
+import { ImplicationsPopover } from "./ImplicationsPopover"
 
 const LETTERS = ["A", "B", "C", "D"]
 
@@ -113,6 +116,8 @@ function QuestionStep({
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!isPresent || e.metaKey || e.ctrlKey || e.altKey) return
+      // Con el foco en «¿Qué implica?», Intro abre el panel en vez de avanzar.
+      if (e.target instanceof Element && e.target.closest("[data-slot^=popover]")) return
       if (e.key >= "1" && e.key <= "4") toggle(order[Number(e.key) - 1])
       else if (e.key === "Enter" && draft.length > 0) onCommit(draft)
       else if (e.key === "0") onCommit(null)
@@ -125,12 +130,22 @@ function QuestionStep({
   return (
     <>
       <CardContent className="space-y-5 pt-2">
-        <div className="space-y-1">
-          <h2 className="font-heading text-xl leading-snug font-semibold sm:text-2xl">
+        <div className="space-y-2">
+          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
             {question.prompt}
+          </p>
+          <h2 className="font-heading text-xl leading-snug font-semibold sm:text-2xl">
+            {question.question}
           </h2>
+          {question.context && (
+            <p className="flex gap-2 rounded-lg bg-muted/60 px-3 py-2 text-sm leading-relaxed text-muted-foreground">
+              <Lightbulb className="mt-0.5 size-4 shrink-0" aria-hidden />
+              <span>{question.context}</span>
+            </p>
+          )}
           <p className="text-sm text-muted-foreground">
-            Marca las medidas que apoyarías. Puedes elegir varias.
+            Marca las medidas que apoyarías (puedes elegir varias). Pulsa «¿Qué implica?» para ver
+            qué cambiaría cada una.
           </p>
         </div>
 
@@ -139,15 +154,18 @@ function QuestionStep({
             const checked = draft.includes(partyId)
             const id = `${question.id}-${partyId}`
             return (
-              <li key={partyId}>
+              <li
+                key={partyId}
+                className={cn(
+                  "rounded-xl border transition-colors",
+                  checked
+                    ? "border-foreground bg-muted shadow-sm"
+                    : "border-border bg-card hover:bg-muted/60"
+                )}
+              >
                 <label
                   htmlFor={id}
-                  className={cn(
-                    "flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed transition-colors sm:text-base",
-                    checked
-                      ? "border-foreground bg-muted shadow-sm"
-                      : "border-border bg-card hover:bg-muted/60"
-                  )}
+                  className="flex cursor-pointer items-start gap-3 px-4 pt-4 pb-2 text-sm leading-relaxed sm:text-base"
                 >
                   <Checkbox
                     id={id}
@@ -160,6 +178,9 @@ function QuestionStep({
                     {LETTERS[i]}
                   </kbd>
                 </label>
+                <div className="pr-4 pb-3 pl-11">
+                  <ImplicationsPopover implication={question.implications[partyId]} />
+                </div>
               </li>
             )
           })}

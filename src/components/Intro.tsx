@@ -26,6 +26,11 @@ export function Intro({ onStart }: { onStart: () => void }) {
           <strong className="font-medium">cuatro medidas, una de cada partido</strong>, en
           orden aleatorio y sin indicar de quién es cada una. Marca las que apoyarías.
         </p>
+        <p>
+          Cada pregunta incluye un breve contexto y, en cada medida, un panel{" "}
+          <strong className="font-medium">«¿Qué implica?»</strong> con qué cambiaría y los
+          argumentos habituales a favor y en contra.
+        </p>
         <ol className="list-decimal space-y-1 pl-5 marker:text-muted-foreground">
           <li>Elige qué temas te importan más y cuáles menos.</li>
           <li>Marca las medidas que apoyarías (unos 12 minutos).</li>

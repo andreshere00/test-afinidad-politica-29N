@@ -31,6 +31,7 @@ import {
 } from "@/lib/scoring"
 import { cn } from "@/lib/utils"
 
+import { ImplicationsPopover } from "./ImplicationsPopover"
 import { PartyMark } from "./PartyMark"
 
 interface Props {
@@ -270,6 +271,8 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
               <PartyMark party={p.id} size="sm" />
               <div className="min-w-0 flex-1 space-y-1">
                 <p className="leading-snug">{question.options[p.id]}</p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                <ImplicationsPopover implication={question.implications[p.id]} />
                 {source && (
                   <a
                     href={source.url}
@@ -281,6 +284,7 @@ function QuestionReveal({ question, answer }: { question: Question; answer: Answ
                     <ExternalLink className="size-3" aria-hidden />
                   </a>
                 )}
+                </div>
               </div>
               {supported && (
                 <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium">

@@ -72,8 +72,13 @@ tienes ocupado, cámbialo allí.
 - `src/data/topics.ts` – los 13 temas (con su icono de Lucide) y los límites de selección.
 - `src/data/parties.ts` – los 4 partidos. El campo opcional `logo` (p. ej. `/partidos/vox.svg` dentro
   de `public/`) sustituye el monograma por un logotipo en escala de grises.
-- `src/data/questions.ts` – las preguntas: `prompt` (subtema), `options` (una medida por partido) y
-  `sources` (fuente de las medidas añadidas fuera del listado original).
+- `src/data/questions.ts` – las preguntas: `prompt` (subtema), `question` (la pregunta en lenguaje
+  llano), `context` (glosario o contexto breve), `options` (una medida por partido, redactada sin
+  tecnicismos), `implications` (qué cambiaría y argumentos a favor y en contra de cada medida, en
+  tono neutral y sin mencionar al partido) y `sources` (fuente de las medidas añadidas fuera del
+  listado original).
+- `src/components/ImplicationsPopover.tsx` – el panel «¿Qué implica?» (se abre al pasar el ratón o
+  al pulsar/tocar).
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,
   `PartyMark` (distintivo de partido); `ui/` contiene los componentes de shadcn.
@@ -104,6 +109,6 @@ programa (Artículo14, Merca2, Tarifaluzhora), porque el PDF del PP supera el ta
 
 ## Añadir o editar preguntas
 
-Añade un objeto a `QUESTIONS` en `src/data/questions.ts` con una medida para cada partido
-(`vox`, `pp`, `psoe`, `fa`). La app se adapta sola al número de preguntas (el enunciado pide
+Añade un objeto a `QUESTIONS` en `src/data/questions.ts` con una medida y sus implicaciones para
+cada partido (`vox`, `pp`, `psoe`, `fa`). Las implicaciones no deben nombrar ni insinuar el partido. La app se adapta sola al número de preguntas (el enunciado pide
 entre 26 y 52).
