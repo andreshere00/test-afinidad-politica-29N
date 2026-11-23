@@ -91,6 +91,8 @@ tienes ocupado, cámbialo allí.
   de esta pregunta» (`QuestionSources`) sin asociarlas a ninguna medida, para no delatar al partido.
 - `src/data/modes.ts` – versiones del test (rápido y completo) y qué preguntas entran en el rápido.
 - `src/lib/scoring.ts` – ponderación de temas y cálculo de afinidad.
+- `src/lib/export.ts` – archivo de texto descargable («Descargar mis respuestas») con el resultado
+  y, para cada pregunta, la medida de cada partido y si la has apoyado. Se genera en el navegador.
 - `src/components/AffinityRadar.tsx` – radares de afinidad por tema (SVG propio, 13 ejes con el icono
   de cada tema y dato al pasar el ratón o con el foco).
 - `src/components/` – `Intro`, `Priorities` (pasos 1 y 2), `TopicGrid`, `Quiz`, `Results`,

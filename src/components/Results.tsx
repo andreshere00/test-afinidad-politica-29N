@@ -1,4 +1,4 @@
-import { Check, ChevronDown, ExternalLink, MessageCircle } from "lucide-react"
+import { Check, ChevronDown, Download, ExternalLink, MessageCircle } from "lucide-react"
 import { motion } from "motion/react"
 import { useMemo } from "react"
 
@@ -21,6 +21,7 @@ import { PARTIES, PARTY_BY_ID, type PartyId } from "@/data/parties"
 import { MODES, type TestMode } from "@/data/modes"
 import type { Question } from "@/data/questions"
 import { TOPICS, type TopicId } from "@/data/topics"
+import { answersText, downloadText } from "@/lib/export"
 import { formatPercent, formatWeight } from "@/lib/format"
 import {
   computeResults,
@@ -288,6 +289,20 @@ export function Results({
             <MessageCircle aria-hidden />
             Compartir en WhatsApp
           </a>
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="h-10 px-5"
+          onClick={() =>
+            downloadText(
+              answersText(results, questions, answers, mode),
+              "test-afinidad-29N-respuestas.txt"
+            )
+          }
+        >
+          <Download aria-hidden />
+          Descargar mis respuestas
         </Button>
         <Button size="lg" className="h-10 px-5" onClick={onRestart}>
           Repetir el test
